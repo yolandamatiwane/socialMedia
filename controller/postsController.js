@@ -38,7 +38,7 @@ const removePost = async(req,res)=>{
 const updatePost = async (req,res)=>{
     let {user_id,content} = req.body
     try {
-        let post = await getPostsDb(req.params.id)
+        let post = await getSinglePostDb(req.params.id)
 
         user_id? user_id=user_id : user_id = post.user_id
         content? content=content : content = post.content

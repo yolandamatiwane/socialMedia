@@ -3,18 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>static page</title>
 </head>
 <body>
+    <h3>HOME:</h3>
     <table border="1">
-        <h3>Users:</h3>
         <tr>
             <th>HTTP</th>
             <th>METHOD</th>
             <th>DESCRIPTION</th>
         </tr>
-        <tr></tr>
-        <tr></tr>
+        <tr>
+            <td>' /(home page)  '</td>
+            <td></td>
+            <td> The Static Page provides all the routes  </td>
+        </tr>
+
+    </table>
+    <h3>USERS:</h3>
+    <table border="1">
+        <tr>
+            <th>HTTP</th>
+            <th>METHOD</th>
+            <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+            <td>'/users'</td>
+            <td>GET</td>
+            <td>Returns an array of all users</td>
+        </tr>
+        <tr>
+            <td>'/users/:id'</td>
+            <td>GET</td>
+            <td>Returns single user's information</td>
+        </tr>
+        <tr>
+            <td>'users/register'</td>
+            <td>POST</td>
+            <td>Registers new user</td>
+        </tr>
+        <tr>
+            <td>'users/update/:id'</td>
+            <td>PATCH</td>
+            <td>Updates user's information</td>
+        </tr>
+        <tr>
+            <td>'users/login'</td>
+            <td>POST</td>
+            <td>Logs in existing user and sends back jwt </td>
+        </tr>
+        <tr>
+            <td>'users/delete/:id'</td>
+            <td>DELETE</td>
+            <td>Removes user's information</td>
+        </tr>
     </table>
     
 </body>

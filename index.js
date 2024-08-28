@@ -1,6 +1,7 @@
 import express from 'express'
 import userRouter from './routes/usersRouter.js'
 import postRouter from './routes/postsRouter.js'
+import commentRouter from './routes/commentsRouter.js'
 
 let port = process.env.PORT || 2107
 
@@ -11,7 +12,7 @@ app.use(express.json())
 app.use(express.static('public'))
 app.use('/users',userRouter)
 app.use('/posts',postRouter)
-
+app.use('/comments',commentRouter)
 app.listen(port,()=>{
     console.log('http://localhost:'+port)
 })
