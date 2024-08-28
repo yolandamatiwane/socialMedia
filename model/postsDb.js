@@ -1,0 +1,32 @@
+import { pool } from "../config/config.js";
+
+const getPostsDb = async ()=>{
+    let [data] = await pool.query('SELECT * FROM Posts')
+    return data
+}
+
+const getSinglePostDb = async (id)=>{
+    let [[data]] = await pool.query('SELECT * FROM Posts WHERE post_id = ?', [id])
+    return data
+}
+const addPostDb = async(user_id,content)=>{
+    await pool.query(`
+    INSERT INTO Posts(user_id,content)
+    VALUES (?,?)`,[user_id,content])
+}
+const deletePost = async(id)=>{
+    await pool.query(`
+    DELETE
+    FROM Posts
+    WHERE post_id=?`,[id])
+}
+
+const editPost = async(id,user_id,content)=>{
+    let [data] = await pool.query(`
+    UPDATE Posts
+    SET user_id=?,content=?
+    WHERE post_id=?`,[user_id,content,id])
+    return data
+}
+
+export {getPostsDb, getSinglePostDb, addPostDb, deletePost, editPost}
