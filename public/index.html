@@ -59,6 +59,72 @@
             <td>Removes user's information</td>
         </tr>
     </table>
+    <h3>POSTS:</h3>
+    <table border="1">
+        <tr>
+            <th>HTTP</th>
+            <th>METHOD</th>
+            <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+            <td>'/posts'</td>
+            <td>GET</td>
+            <td>Returns an array of all posts</td>
+        </tr>
+        <tr>
+            <td>'/posts/:id'</td>
+            <td>GET</td>
+            <td>Returns single post</td>
+        </tr>
+        <tr>
+            <td>'posts/add'</td>
+            <td>POST</td>
+            <td>Adds new post</td>
+        </tr>
+        <tr>
+            <td>'posts/update/:id'</td>
+            <td>PATCH</td>
+            <td>Updates post's information</td>
+        </tr>
+        <tr>
+            <td>'posts/delete/:id'</td>
+            <td>DELETE</td>
+            <td>Removes post</td>
+        </tr>
+    </table>
+    <h3>COMMENTS:</h3>
+    <table border="1">
+        <tr>
+            <th>HTTP</th>
+            <th>METHOD</th>
+            <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+            <td>'/comments'</td>
+            <td>GET</td>
+            <td>Returns an array of all comments</td>
+        </tr>
+        <tr>
+            <td>'/comments/:id'</td>
+            <td>GET</td>
+            <td>Returns single comment</td>
+        </tr>
+        <tr>
+            <td>'comments/add'</td>
+            <td>POST</td>
+            <td>Adds new comment</td>
+        </tr>
+        <tr>
+            <td>'comments/update/:id'</td>
+            <td>PATCH</td>
+            <td>Updates comment </td>
+        </tr>
+        <tr>
+            <td>'comments/delete/:id'</td>
+            <td>DELETE</td>
+            <td>Removes comment</td>
+        </tr>
+    </table>
     
 </body>
 </html>
