@@ -22,16 +22,9 @@ const checkUser = async (req,res,next)=>{
         let result = await compare(password,hashedPassword)
     
         if(result){
-            let token = jwt.sign({
-                email,
-                password
-            },
-            process.env.SECRET_KEY,
-            {
-                expiresIn:'1h'
-            })
+            let token = jwt.sign({email:email},process.env.SECRET_KEY,{expiresIn:'1h'})
             req.body.token = token
-            res.status(202).json({token})
+            // res.status(202).json({token})
             next()
         } else{
             res.status(400).json({err:"Invalid email or password"})
@@ -43,12 +36,14 @@ const checkUser = async (req,res,next)=>{
 
 const verifyAToken = (req,res,next)=>{
     let {cookies} = req.headers
+    console.log(cookies);
+    
     // checks if token exists first
     let token = cookies && cookies.split(' ')[1] // if there is a cookie, then we can split it
     console.log(req.headers)
-    if(!token){
-        return res.status(401).json({message:"Unauthorized"})
-    }
+    // if(!token){
+    //     return res.status(401).json({message:"Unauthorized"})
+    // }
     jwt.verify(token,process.env.SECRET_KEY,(err,decoded)=>{
         if(err){
             res.json({message:'Token is invalid'})
