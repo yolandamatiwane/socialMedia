@@ -1,18 +1,26 @@
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <section v-for="user in $store.state.users " :key="user.user_id">
+      {{ user.user_id }}
+      {{ user.firstName }}
+    </section>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
 
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
+  methods:{
+    getUsers(){
+       this.$store.dispatch('fetchUsers')
+    }
+  },
+  mounted() {
+    this.getUsers()
   }
 }
 </script>
