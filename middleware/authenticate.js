@@ -39,8 +39,8 @@ const verifyAToken = (req,res,next)=>{
     console.log(cookies);
     
     // checks if token exists first
-    let token = cookies && cookies.split(' ')[1] // if there is a cookie, then we can split it
-    console.log(req.headers)
+    let token = cookies && cookies.split("=")[1] // if there is a cookie, then we can split it
+    console.log(token)
     // if(!token){
     //     return res.status(401).json({message:"Unauthorized"})
     // }
