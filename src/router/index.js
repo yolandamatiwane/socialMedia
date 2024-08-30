@@ -22,6 +22,22 @@ const routes = [
     name: 'login',
     component: () => import('../views/loginView.vue')
   }
+  // ,
+  // {
+  //   path: '/logout',
+  //   name: 'logout',
+  //   component: () => import('../views/loginView.vue'),
+  //   beforeEnter(){
+  //     cookies.remove('token')
+  //     if(!cookies.get('token')){
+  //       router.push({name: 'login'})
+  //       // setTimeout( ()=>{
+  //       //   location.reload()
+  //       // }, 2000)
+        
+  //     }
+  //   }
+  // }
 ]
 
 const router = createRouter({

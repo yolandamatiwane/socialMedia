@@ -1,12 +1,37 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>|
-    <router-link to="/login">Login</router-link>|
-    <router-link to="/register">Register</router-link>
+    <div v-if="token">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <!-- <router-link to="/logout">Logout</router-link> -->
+      <button @click="logOut()" class="btn btn-dark">LogOut</button>
+
+    </div>
+    <div v-else>
+      <router-link to="/login">Login</router-link>|
+      <router-link to="/register">Register</router-link>
+    </div>
   </nav>
   <router-view/>
 </template>
+
+<script>
+  export default {
+    computed:{
+      token(){
+        return this.$cookies.get('token');
+      }
+    },
+    methods: {
+      async logOut(){
+        this.$cookies.remove('token')
+        await this.$router.push('/login')
+        location.reload()
+
+      }
+    }
+  }
+</script>
 
 <style>
 #app {

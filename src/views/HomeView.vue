@@ -1,9 +1,9 @@
-
 <template>
   <div>
-    <section v-for="user in $store.state.users " :key="user.user_id">
-      {{ user.user_id }}
-      {{ user.firstName }}
+    <section v-for="post in $store.state.posts " :key="post.post_id">
+      {{ post.created_at }}
+      {{ post.post_id }}
+      {{ post.content }}
     </section>
   </div>
 </template>
@@ -15,12 +15,12 @@
 export default {
   name: 'HomeView',
   methods:{
-    getUsers(){
-       this.$store.dispatch('fetchUsers')
+    getPosts(){
+      this.$store.dispatch('fetchPosts')
     }
   },
   mounted() {
-    this.getUsers()
+    this.getPosts()
   }
 }
 </script>

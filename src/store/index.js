@@ -33,11 +33,17 @@ export default createStore({
 
       console.log(data.token)
       await router.push('/')
+      location.reload()
+
     },
     async fetchUsers({commit}){
       let {data} = await axios.get('http://localhost:2107/users')
       commit('setUsers',data)
       console.log(data)
+    },
+    async fetchPosts({commit}){
+      let {data} = await axios.get('http://localhost:2107/posts')
+      commit('setPosts',data)
     }
 
   },
