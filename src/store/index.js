@@ -23,10 +23,10 @@ export default createStore({
     }
   },
   actions: {
-    // async registerUser({commit},info){
-    //   let data = await axios.post('http://localhost:2107/users/register',info)
-    //   console.log(data)
-    // },
+    async registerUser({commit},info){
+      let data = await axios.post('http://localhost:2107/users/register',info)
+      console.log(data)
+    },
     async loginUser({commit},info){
       let {data} = await axios.post('http://localhost:2107/users/login',info)
       $cookies.set('token',data.token)
