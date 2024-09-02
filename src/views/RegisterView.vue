@@ -28,6 +28,22 @@
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <input type="password" class="form-control" v-model="password" id="exampleInputPassword1">
                 </div>
+                <div class="mb-3">
+                    <label for="exampleInputRole1" class="form-label">Role</label>
+                    <input type="role" class="form-control" v-model="role" id="exampleInputRole1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputProfile1" class="form-label">Profile Url</label>
+                    <input type="profile" class="form-control" v-model="profile" id="exampleInputProfile1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputBackground1" class="form-label">Background Url</label>
+                    <input type="background" class="form-control" v-model="background" id="exampleInputBackground1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputGender1" class="form-label">Gender</label>
+                    <input type="gender" class="form-control" v-model="gender" id="exampleInputPassword1">
+                </div>
                 <button @click.prevent="addUser()" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -52,6 +68,10 @@ export default {
             username:'',
             email:'',
             password:'',
+            role:'',
+            profile:'',
+            background:'',
+            gender:'',
             currentTime: new Date()
         }
     },methods:{

@@ -10,20 +10,21 @@ export default createStore({
   state: {
     users:null,
     posts:null,
-    user:null
+    user:null,
+    post:null
     
   },
   getters: {
   },
   mutations: {
-    setUsers(state,payload){
-      state.users=payload
+    setUser(state,payload){
+      state.user=payload
     },
     setPosts(state,payload){
       state.posts=payload
     },
-    setUser(state,payload){
-      state.user=payload
+    setPost(state,payload){
+      state.post=payload
     }
   },
   actions: {
@@ -40,19 +41,24 @@ export default createStore({
       location.reload()
 
     },
-    async fetchUsers({commit}){
-      let {data} = await axios.get('http://localhost:2107/users')
-      // console.log(data)
-      commit('setUsers',data)
-    },
     async fetchUser({commit}){
-      let {data} = await axios.get('http://localhost:2107/users/user')
-      commit('setUser',data)
-      console.log(data)
+      try{
+        let {data} = await axios.get('http://localhost:2107/users/user')
+        console.log(data)
+        commit('setUser',data)
+
+      }catch(err){
+        console.log(err)
+      }
+
     },
     async fetchPosts({commit}){
       let {data} = await axios.get('http://localhost:2107/posts')
       commit('setPosts',data)
+    },
+    async fetchPost({commit}){
+      let {data} = await axios.get('http://localhost:2107/posts/post')
+      commit('setPost',data)
     }
 
   },
