@@ -5,6 +5,8 @@
       {{ post.post_id }}
       {{ post.content }}
     </section>
+
+    {{ $store.state.posts}}
   </div>
 </template>
 

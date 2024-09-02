@@ -9,17 +9,22 @@ axios.defaults.headers = $cookies.get('token')
 export default createStore({
   state: {
     users:null,
-    posts:null
+    posts:null,
+    user:null,
+    post:null
     
   },
   getters: {
   },
   mutations: {
-    setUsers(state,payload){
-      state.users=payload
+    setUser(state,payload){
+      state.user=payload
     },
     setPosts(state,payload){
       state.posts=payload
+    },
+    setPost(state,payload){
+      state.post=payload
     }
   },
   actions: {
@@ -36,14 +41,24 @@ export default createStore({
       location.reload()
 
     },
-    async fetchUsers({commit}){
-      let {data} = await axios.get('http://localhost:2107/users')
-      commit('setUsers',data)
-      console.log(data)
+    async fetchUser({commit}){
+      try{
+        let {data} = await axios.get('http://localhost:2107/users/user')
+        console.log(data)
+        commit('setUser',data)
+
+      }catch(err){
+        console.log(err)
+      }
+
     },
     async fetchPosts({commit}){
       let {data} = await axios.get('http://localhost:2107/posts')
       commit('setPosts',data)
+    },
+    async fetchPost({commit}){
+      let {data} = await axios.get('http://localhost:2107/posts/post')
+      commit('setPost',data)
     }
 
   },
