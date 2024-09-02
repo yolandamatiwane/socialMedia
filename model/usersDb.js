@@ -7,7 +7,7 @@ const getUsersDb = async ()=>{
 }
 
 const getUserDb = async (id)=>{
-    let [[data]] = await pool.query(`
+    let [data] = await pool.query(`
     SELECT *
     FROM Users
     WHERE user_id = ?`,[id])
@@ -22,18 +22,18 @@ const logInDb= async(email)=>{
     return data?data:''
 }
 
-const addUserDb = async(firstName,lastName,age,username,email,password)=>{
+const addUserDb = async(firstName,lastName,age,username,email,password,role,profile,background,gender)=>{
     await pool.query(`
-        INSERT INTO Users(firstName,lastName,age,username,email,password)
-        VALUES(?,?,?,?,?,?)`,[firstName,lastName,age,username,email,password]
+        INSERT INTO Users(firstName,lastName,age,username,email,password,role,profile,background,gender)
+        VALUES(?,?,?,?,?,?)`,[firstName,lastName,age,username,email,password,role,profile,background,gender]
     )
 }
 
-const editUserDb = async(id,firstName,lastName,age,username,email,password)=>{
+const editUserDb = async(id,firstName,lastName,age,username,email,password,role,profile,background,gender)=>{
     let [data] = await pool.query(`
     UPDATE Users
-    SET firstName=?,lastName=?,age=?,username=?,email=?,password=?
-    WHERE user_id=?`,[firstName,lastName,age,username,email,password,id])
+    SET firstName=?,lastName=?,age=?,username=?,email=?,password=?,role=?,profile=?,background=?,gender=?
+    WHERE user_id=?`,[firstName,lastName,age,username,email,password,role,profile,background,gender,id])
     return data
 }
 

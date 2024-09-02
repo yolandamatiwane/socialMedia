@@ -36,7 +36,7 @@ const checkUser = async (req,res,next)=>{
 
 const verifyAToken = (req,res,next)=>{
     let {cookie} = req.headers
-    console.log(cookie);
+    // console.log(cookie);
     
     // checks if token exists first
     let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
@@ -51,7 +51,7 @@ const verifyAToken = (req,res,next)=>{
         }
         // req.body.username = decoded.username
         req.user = decoded.email
-         console.log(req.user)
+        //  console.log(req.user)
         next()
     })
 }

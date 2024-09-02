@@ -13,10 +13,11 @@ const fetchUsers = async(req,res)=>{
 
 const fetchUser = async (req,res)=>{
     try {
-        console.log(req.user)
-        res.status(202).json(await getUserDb(req.user.email))
+        let user = await logInDb(req.user)
+        // console.log(user.user_id)
+        res.status(202).json(await getUserDb(user.user_id))
     } catch (err) {
-        res.status(404).json({err:"There was an isue with fetching"})
+        res.status(404).json({err:"There was an issue with fetching"})
     }
 }
 
@@ -32,9 +33,9 @@ const logIN = (req,res)=>{
 }
 
 const addUser = async(req,res)=>{
-    let {firstName,lastName,age,username,email,password} = req.body
+    let {firstName,lastName,age,username,email,password,role,profile,background,gender} = req.body
     try{
-        if (!firstName || !lastName || !age || !username || !email || !password) {
+        if (!firstName || !lastName || !age || !username || !email || !password || !gender) {
             return res.status(400).json({err:"Missing required fields" });
         }
         else{
@@ -48,7 +49,7 @@ const addUser = async(req,res)=>{
                 if(err){
                     console.log(err)
                 }
-                await addUserDb(firstName,lastName,age,username,email,hashedP)
+                await addUserDb(firstName,lastName,age,username,email,hashedP,role,profile,background,gender)
             })
             res.json({message:"User added successfully"})
                 }
@@ -59,7 +60,7 @@ const addUser = async(req,res)=>{
 }
 
 const updateUser = async (req,res)=>{
-    let {firstName,lastName,age,username,email,password} = req.body
+    let {firstName,lastName,age,username,email,password,role,profile,background,gender} = req.body
 
     try {
         let user = await getUserDb(req.params.id)
@@ -69,6 +70,10 @@ const updateUser = async (req,res)=>{
         age? age=age : age=user.age
         username? username=username : username=user.username
         email? email=email : email=user.email
+        role? role=role : role=user.role
+        profile? profile=profile : profile=user.profile
+        background? background=background : background=user.background
+        gender? gender=gender : gender=user.gender
         if(password){
             hash(password,12,async (err,hashedP)=>{
                 if(err){
@@ -76,10 +81,10 @@ const updateUser = async (req,res)=>{
                 }
             })
             password = hashedP
-            await editUserDb(req.params.id,firstName,lastName,age,username,email,hashedP)
+            await editUserDb(req.params.id,firstName,lastName,age,username,email,hashedP,role,profile,background,gender)
         }else{
             password = user.password
-            await editUserDb(req.params.id,firstName,lastName,age,username,email,password)
+            await editUserDb(req.params.id,firstName,lastName,age,username,email,password,role,profile,background,gender)
         }
         res.status(202).json({message:"User updated successfully"})
         
