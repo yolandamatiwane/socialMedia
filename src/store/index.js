@@ -9,7 +9,8 @@ axios.defaults.headers = $cookies.get('token')
 export default createStore({
   state: {
     users:null,
-    posts:null
+    posts:null,
+    user:null
     
   },
   getters: {
@@ -20,6 +21,9 @@ export default createStore({
     },
     setPosts(state,payload){
       state.posts=payload
+    },
+    setUser(state,payload){
+      state.user=payload
     }
   },
   actions: {
@@ -38,7 +42,12 @@ export default createStore({
     },
     async fetchUsers({commit}){
       let {data} = await axios.get('http://localhost:2107/users')
+      // console.log(data)
       commit('setUsers',data)
+    },
+    async fetchUser({commit}){
+      let {data} = await axios.get('http://localhost:2107/users/user')
+      commit('setUser',data)
       console.log(data)
     },
     async fetchPosts({commit}){
