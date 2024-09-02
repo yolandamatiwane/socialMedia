@@ -35,12 +35,12 @@ const checkUser = async (req,res,next)=>{
 }
 
 const verifyAToken = (req,res,next)=>{
-    let {cookies} = req.headers
-    console.log(cookies);
+    let {cookie} = req.headers
+    console.log(cookie);
     
     // checks if token exists first
-    let token = cookies && cookies.split("=")[1] // if there is a cookie, then we can split it
-    console.log(token)
+    let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
+    // console.log(token)
     // if(!token){
     //     return res.status(401).json({message:"Unauthorized"})
     // }
@@ -50,8 +50,8 @@ const verifyAToken = (req,res,next)=>{
             return
         }
         // req.body.username = decoded.username
-        req.body.user = decoded.email
-        //  console.log(decoded)
+        req.user = decoded.email
+         console.log(req.user)
         next()
     })
 }

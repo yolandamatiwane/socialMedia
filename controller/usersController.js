@@ -13,7 +13,8 @@ const fetchUsers = async(req,res)=>{
 
 const fetchUser = async (req,res)=>{
     try {
-        res.status(202).json(await getUserDb(req.params.id))
+        console.log(req.user)
+        res.status(202).json(await getUserDb(req.user.email))
     } catch (err) {
         res.status(404).json({err:"There was an isue with fetching"})
     }
