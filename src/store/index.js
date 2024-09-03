@@ -55,7 +55,7 @@ export default createStore({
     },
     async removeUser({commit,state}){
       const [userId] = state.user
-      console.log(userId.user_id);
+      // console.log(userId.user_id);
       let data = await axios.delete(`http://localhost:2107/users/delete/${userId.user_id}`)
       console.log(data)
     },
@@ -66,8 +66,13 @@ export default createStore({
     async fetchPost({commit}){
       let {data} = await axios.get('http://localhost:2107/posts/post')
       commit('setPost',data)
+    },
+    async updateProfile({commit,state},info){
+      let [userId] = state.user
+      console.log(userId.user_id)
+      let {data} = await axios.patch(`http://localhost:2107/users/update/${userId.user_id}`,info)
+      console.log(data);
     }
-
   },
   modules: {
   }
