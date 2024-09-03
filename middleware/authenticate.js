@@ -12,7 +12,7 @@ const checkUser = async (req,res,next)=>{
     }
     try {
         let user = await logInDb(email)
-        console.log(user)
+        // console.log(user)
         if(!user){
            return res.status(400).json({message:"invalid email"})
         }
@@ -36,11 +36,11 @@ const checkUser = async (req,res,next)=>{
 
 const verifyAToken = (req,res,next)=>{
     let {cookie} = req.headers
-    // console.log(cookie);
+    console.log(cookie);
     
     // checks if token exists first
     let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
-    // console.log(token)
+    console.log(token)
     // if(!token){
     //     return res.status(401).json({message:"Unauthorized"})
     // }

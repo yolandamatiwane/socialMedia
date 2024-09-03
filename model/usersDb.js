@@ -6,7 +6,16 @@ const getUsersDb = async ()=>{
     return data
 }
 
+// this returns an object
 const getUserDb = async (id)=>{
+    let [[data]] = await pool.query(`
+    SELECT *
+    FROM Users
+    WHERE user_id = ?`,[id])
+    return data
+}
+// returns an array
+const getUserProfile = async (id)=>{
     let [data] = await pool.query(`
     SELECT *
     FROM Users
@@ -45,4 +54,4 @@ const deleteUserDb = async(id)=>{
 }
 
 
-export {getUsersDb, getUserDb, logInDb,addUserDb, editUserDb, deleteUserDb}
+export {getUsersDb, getUserDb, logInDb,addUserDb, editUserDb, deleteUserDb, getUserProfile}

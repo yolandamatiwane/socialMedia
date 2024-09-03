@@ -1,5 +1,5 @@
 import { hash } from "bcrypt";
-import { getUsersDb, getUserDb ,addUserDb, logInDb, editUserDb, deleteUserDb} from "../model/usersDb.js";
+import { getUsersDb, getUserDb ,addUserDb, logInDb, editUserDb, deleteUserDb,getUserProfile} from "../model/usersDb.js";
 
 
 const fetchUsers = async(req,res)=>{
@@ -13,9 +13,16 @@ const fetchUsers = async(req,res)=>{
 
 const fetchUser = async (req,res)=>{
     try {
+        res.status(202).json(await getUserDb(req.params.id))
+    } catch (err) {
+        res.status(404).json({err:"There was an issue with fetching"})
+    }
+}
+const fetchUserReq = async (req,res)=>{
+    try {
         let user = await logInDb(req.user)
         // console.log(user.user_id)
-        res.status(202).json(await getUserDb(user.user_id))
+        res.status(202).json(await getUserProfile(user.user_id))
     } catch (err) {
         res.status(404).json({err:"There was an issue with fetching"})
     }
@@ -104,4 +111,4 @@ const removeUser = async(req,res)=>{
 }
 
 
-export {fetchUsers,fetchUser,addUser, logIN,updateUser,removeUser}
+export {fetchUsers,fetchUser,addUser, logIN,updateUser,removeUser,fetchUserReq}

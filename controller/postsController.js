@@ -17,13 +17,13 @@ const fetchSinglePost = async(req,res)=>{
     }
 }
 const fetchSingleUserPost = async(req,res)=>{
-    try {
+    // try {
         let user = await logInDb(req.user)
         console.log(user.user_id)
         res.status(202).json(await getSingleUserPostDb(user.user_id))
-    } catch (err) {
-        res.status(404).json({err:"There is an issue with displaying single post"})
-    }
+    // } catch (err) {
+    //     res.status(404).json({err:"There is an issue with displaying single post"})
+    // }
 }
 
 const addPost = async (req,res)=>{
