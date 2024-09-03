@@ -30,11 +30,11 @@ export default createStore({
   },
   actions: {
     async registerUser({commit},info){
-      let data = await axios.post('http://localhost:2107/users/register',info)
+      let data = await axios.post(`${apiUrl}users/register`,info)
       console.log(data)
     },
     async loginUser({commit},info){
-      let {data} = await axios.post('http://localhost:2107/users/login',info)
+      let {data} = await axios.post(`http://localhost:2107/users/login`,info)
       $cookies.set('token',data.token)
 
       console.log(data.token)
@@ -45,7 +45,7 @@ export default createStore({
     async fetchUser({commit}){
       try{
         let {data} = await axios.get('http://localhost:2107/users/user')
-        console.log(data)
+        // console.log(data)
         commit('setUser',data)
 
       }catch(err){
@@ -65,6 +65,7 @@ export default createStore({
     },
     async fetchPost({commit}){
       let {data} = await axios.get('http://localhost:2107/posts/post')
+      console.log(data)
       commit('setPost',data)
     },
     async updateProfile({commit,state},info){
@@ -72,6 +73,10 @@ export default createStore({
       console.log(userId.user_id)
       let {data} = await axios.patch(`http://localhost:2107/users/update/${userId.user_id}`,info)
       console.log(data);
+    },
+    async updatePost({commit},id){
+      let {data} = await axios.patch(`http://localhost:2107/posts/update/${id.post_id}`,id)
+      console.log(data)
     }
   },
   modules: {

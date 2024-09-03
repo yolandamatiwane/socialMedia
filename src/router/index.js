@@ -26,23 +26,12 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import('../views/ProfileView.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/AdminView.vue')
   }
-  // ,
-  // {
-  //   path: '/logout',
-  //   name: 'logout',
-  //   component: () => import('../views/loginView.vue'),
-  //   beforeEnter(){
-  //     cookies.remove('token')
-  //     if(!cookies.get('token')){
-  //       router.push({name: 'login'})
-  //       // setTimeout( ()=>{
-  //       //   location.reload()
-  //       // }, 2000)
-        
-  //     }
-  //   }
-  // }
 ]
 
 const router = createRouter({
