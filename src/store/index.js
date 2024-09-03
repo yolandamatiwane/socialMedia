@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import {useCookies} from 'vue-cookies'
 import router from '@/router'
+const apiUrl = 'https://socialmedia-3kos.onrender.com/'
 
 axios.defaults.withCredentials = true
 axios.defaults.headers = $cookies.get('token')
@@ -37,7 +38,7 @@ export default createStore({
       $cookies.set('token',data.token)
 
       console.log(data.token)
-      await router.push('/')
+      await router.push('/home')
       location.reload()
 
     },
@@ -51,6 +52,12 @@ export default createStore({
         console.log(err)
       }
 
+    },
+    async removeUser({commit,state}){
+      const [userId] = state.user
+      console.log(userId.user_id);
+      let data = await axios.delete(`http://localhost:2107/users/delete/${userId.user_id}`)
+      console.log(data)
     },
     async fetchPosts({commit}){
       let {data} = await axios.get('http://localhost:2107/posts')

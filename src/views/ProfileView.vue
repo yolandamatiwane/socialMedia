@@ -21,6 +21,7 @@
                     <img v-if="content.url!=''" :src="content.url" class="card-img-bottom" id="postedImg">
                 </div>
             </div>
+            <button @click="removeUser" class="btn btn-outline-dark">Delete Account</button>
         </div>
 </template>
 <script>
@@ -39,6 +40,12 @@
             },
             getPost(){
                 this.$store.dispatch('fetchPost')
+            },
+            removeUser(){
+                this.$store.dispatch('removeUser')
+                .then(() => {
+                    this.$router.push('/login')
+                });
             }
         },
         mounted(){
