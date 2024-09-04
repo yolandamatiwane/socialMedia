@@ -28,6 +28,11 @@ const routes = [
     component: () => import('../views/ProfileView.vue')
   },
   {
+    path: '/post',
+    name: 'post',
+    component: () => import('../views/PostView.vue')
+  },
+  {
     path: '/admin',
     name: 'admin',
     component: () => import('../views/AdminView.vue')

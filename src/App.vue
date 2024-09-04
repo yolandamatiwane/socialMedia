@@ -1,10 +1,15 @@
 <template>
-  <nav>
+  <div id="appDiv">
+    <nav>
     <div v-if="token">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/profile" >Profile</router-link> |
-      <router-link to="/admin">Admin</router-link>
+      <router-link to="/">Home</router-link> 
+      <router-link to="/about">About</router-link> 
+      <router-link to="/post">Posts</router-link>
+      <router-link to="/profile" >Profile</router-link> 
+      <div v-if="isAdmin">
+        <router-link to="/admin">Admin</router-link>
+      </div>
+
       <button @click="logOut()" class="btn btn-dark">LogOut</button>
 
     </div>
@@ -12,8 +17,9 @@
       <router-link to="/login">Login</router-link>|
       <router-link to="/register">Register</router-link>
     </div>
-  </nav>
+    </nav>
   <router-view/>
+  </div>
 </template>
 
 <script>
@@ -21,6 +27,9 @@
     computed:{
       token(){
         return this.$cookies.get('token');
+      },
+      isAdmin(){
+        return this.$cookies.get('role') == 'admin'
       }
     },
     methods: {
@@ -42,17 +51,29 @@
   text-align: center;
   color: #2c3e50;
 }
+#appDiv{
+  display: flex;
+}
 
 nav {
+  width: 33%;
   padding: 30px;
+}
+nav div{
+  display: flex;
+  flex-direction: column;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #05553a;
+  /* height: 90px; */
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #032d1a;
+  border-radius: 20px;
+  /* background-color: #05553a33; */
 }
 </style>

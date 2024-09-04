@@ -2,10 +2,7 @@
   <div>
     <div class="container-fluid text-center">
       <div class="row">
-        <div class="col">
-          1 of 3
-        </div>
-        <div class="col-6" id="main">
+        <div class="col-8" id="main">
           <div class="flex">
             <div id="homeUserDets" v-for="user in users" :key="user.user_id">
             <img :src="user.profile" id="userPic">

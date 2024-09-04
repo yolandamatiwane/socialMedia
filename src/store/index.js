@@ -33,13 +33,14 @@ export default createStore({
   },
   actions: {
     async registerUser({commit},info){
-      let data = await axios.post(`${apiUrl}users/register`,info)
+      let data = await axios.post(`http://localhost:2107/users/register`,info)
       console.log(data)
     },
     async loginUser({commit},info){
-      let {data} = await axios.post(`${apiUrl}users/login`,info)
+      let {data} = await axios.post(`http://localhost:2107/users/login`,info)
       $cookies.set('token',data.token)
-
+      let role = JSON.parse(window.atob(data.token.split(".")[1]))
+      $cookies.set('role',role.role)
       console.log(data.token)
       await router.push('/')
       location.reload()
@@ -82,17 +83,25 @@ export default createStore({
       console.log(data)
       commit('setPost',data)
     },
+    // async fetchPostById({commit},id){
+    //   let {data} = await axios.get(`http://localhost:2107/posts/${id}`)
+    //   console.log(data)
+    //   commit('setPost',data)
+    // },
     async updateProfile({commit,state},info){
       let [userId] = state.user
       console.log(userId.user_id)
       let {data} = await axios.patch(`http://localhost:2107/users/update/${userId.user_id}`,info)
       console.log(data);
+    },
+    async updatePost({commit},id){
+      console.log(id.post_id)
+      let {data} = await axios.patch(`http://localhost:2107/posts/update/${id.post_id}`,id)
+      console.log(data)
+    },
+    async deletePost({commit},id){
+      let {data} = await axios.delete(`http://localhost:2107/posts/delete/${id}`)
     }
-    ,
-    // async updatePost({commit},id){
-    //   let {data} = await axios.patch(`http://localhost:2107/posts/update/${id.post_id}`,id)
-    //   console.log(data)
-    // }
   },
   modules: {
   }

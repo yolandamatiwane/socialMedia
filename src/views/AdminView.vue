@@ -5,6 +5,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>selected</th>
                     <th scope="col">PostID</th>
                     <th scope="col">UserID</th>
                     <th scope="col">Content</th>
@@ -13,11 +14,14 @@
                 </thead>
                 <tbody>
                     <tr v-for="post in posts" :key="post.post_id">
+                        <td>
+                            <input class="form-check-input" type="checkbox" :id="'checkbox-' + post.post_id" v-model="selectedPosts" :value="post.post_id">
+                        </td>
                         <td>{{ post.post_id }}</td>
                         <td>{{post.user_id}}</td>
                         <td>{{post.content}}</td>
-                        <td>{{ post.url }}</td>
-                        <td><button class="btn btn-dark">Delete Post</button></td>
+                        <td><img :src="post.url" id="postURL"></td>
+                        <td><button class="btn btn-dark" @click.prevent="removePost(post.post_id)">Delete Post</button></td>
                         <td>
                             <edit-comp>
                                 <template #updatePost>
@@ -38,7 +42,7 @@
                                             <label for="exampleInputUrl1" class="form-label">Url</label>
                                             <input type="text" class="form-control" id="exampleInputUrl1" v-model="url">
                                         </div>
-                                        <button type="submit" class="btn btn-dark" @submit.prevent="updatePost()">Submit</button>
+                                        <button class="btn btn-dark" @click.prevent="editPost()">Submit</button>
                                     </form>
                                 </template>
                             </edit-comp>
@@ -46,9 +50,8 @@
                     </tr>
                 </tbody>
             </table>
+            <button class="btn btn-dark" @click.prevent="deleteSelected">Delete Selected Users</button>
         </div>
-        <h5>Users</h5>
-
     </div>
 </template>
 <script>
@@ -59,7 +62,8 @@ export default {
             user_id:undefined,
             content:undefined,
             url:undefined,
-            post_id:undefined
+            post_id:undefined,
+            selectedPosts:[]
         }
     },
     components:{
@@ -76,6 +80,15 @@ export default {
     },
     editPost(){
         this.$store.dispatch('updatePost',this.$data)
+    },
+    removePost(id){
+        this.$store.dispatch('deletePost',id)
+    },
+    deleteSelected(){
+        this.selectedPosts.forEach(postId => {
+            this.$store.dispatch('deletePost',postId)
+        })
+        this.selectedPosts = []
     }
   },
   mounted() {
@@ -83,6 +96,9 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
+    #postURL{
+        width: 18%;
+    }
     
 </style>
