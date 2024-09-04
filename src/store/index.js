@@ -21,6 +21,9 @@ export default createStore({
     setUser(state,payload){
       state.user=payload
     },
+    setUsers(state,payload){
+      state.users=payload
+    },
     setPosts(state,payload){
       state.posts=payload
     },
@@ -34,11 +37,11 @@ export default createStore({
       console.log(data)
     },
     async loginUser({commit},info){
-      let {data} = await axios.post(`http://localhost:2107/users/login`,info)
+      let {data} = await axios.post(`${apiUrl}users/login`,info)
       $cookies.set('token',data.token)
 
       console.log(data.token)
-      await router.push('/home')
+      await router.push('/')
       location.reload()
 
     },
@@ -47,6 +50,17 @@ export default createStore({
         let {data} = await axios.get('http://localhost:2107/users/user')
         // console.log(data)
         commit('setUser',data)
+
+      }catch(err){
+        console.log(err)
+      }
+
+    },
+    async fetchUsers({commit}){
+      try{
+        let {data} = await axios.get('http://localhost:2107/users/')
+        // console.log(data)
+        commit('setUsers',data)
 
       }catch(err){
         console.log(err)
@@ -73,11 +87,12 @@ export default createStore({
       console.log(userId.user_id)
       let {data} = await axios.patch(`http://localhost:2107/users/update/${userId.user_id}`,info)
       console.log(data);
-    },
-    async updatePost({commit},id){
-      let {data} = await axios.patch(`http://localhost:2107/posts/update/${id.post_id}`,id)
-      console.log(data)
     }
+    ,
+    // async updatePost({commit},id){
+    //   let {data} = await axios.patch(`http://localhost:2107/posts/update/${id.post_id}`,id)
+    //   console.log(data)
+    // }
   },
   modules: {
   }
