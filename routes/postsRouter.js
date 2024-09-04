@@ -4,9 +4,9 @@ import { verifyAToken } from '../middleware/authenticate.js'
 
 const router = express.Router()
 
-router.get('/',fetchPosts)
+router.get('/',verifyAToken,fetchPosts)
 router.get('/post',verifyAToken,fetchSingleUserPost)
-// router.get('/:id',verifyAToken,fetchSinglePost)
+router.get('/:id',verifyAToken,fetchSinglePost)
 router.post('/add',verifyAToken,addPost)
 router.delete('/delete/:id',verifyAToken,removePost)
 router.patch('/update/:id',verifyAToken,updatePost)

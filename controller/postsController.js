@@ -46,7 +46,7 @@ const removePost = async(req,res)=>{
 }
 
 const updatePost = async (req,res)=>{
-    let {user_id,content} = req.body
+    let {user_id,content,url} = req.body
     try {
         let post = await getSinglePostDb(req.params.id)
 
@@ -58,6 +58,7 @@ const updatePost = async (req,res)=>{
         res.status(202).json({message:"Updated post successfully"})
     } catch (err) {
         res.status(404).json({err:"There is an issue with updating post"})
+        throw err
     }
     
 
