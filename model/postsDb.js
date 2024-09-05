@@ -13,7 +13,7 @@ const getSingleUserPostDb = async (id)=>{
     let [data] = await pool.query('SELECT * FROM Posts WHERE user_id = ?', [id])
     return data
 }
-const addPostDb = async(user_id,content)=>{
+const addPostDb = async(user_id,content,url)=>{
     await pool.query(`
     INSERT INTO Posts(user_id,content,url)
     VALUES (?,?,?)`,[user_id,content,url])
