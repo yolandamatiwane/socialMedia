@@ -12,7 +12,8 @@ export default createStore({
     users:null,
     posts:null,
     user:null,
-    post:null
+    post:null,
+    single:null
     
   },
   getters: {
@@ -29,6 +30,9 @@ export default createStore({
     },
     setPost(state,payload){
       state.post=payload
+    },
+    setSingle(state,payload){
+      state.single=payload
     }
   },
   actions: {
@@ -74,6 +78,7 @@ export default createStore({
       let data = await axios.delete(`http://localhost:2107/users/delete/${userId.user_id}`)
       console.log(data)
     },
+    // posts
     async fetchPosts({commit}){
       let {data} = await axios.get('http://localhost:2107/posts')
       commit('setPosts',data)
@@ -83,11 +88,12 @@ export default createStore({
       console.log(data)
       commit('setPost',data)
     },
-    // async fetchPostById({commit},id){
-    //   let {data} = await axios.get(`http://localhost:2107/posts/${id}`)
-    //   console.log(data)
-    //   commit('setPost',data)
-    // },
+    async fetchPostById({commit},id){
+      console.log(id)
+      let {data} = await axios.get(`http://localhost:2107/posts/${id}`)
+      console.log(data)
+      commit('setSingle',data)
+    },
     async updateProfile({commit,state},info){
       let [userId] = state.user
       console.log(userId.user_id)
@@ -99,8 +105,21 @@ export default createStore({
       let {data} = await axios.patch(`http://localhost:2107/posts/update/${id.post_id}`,id)
       console.log(data)
     },
+    async updatePostLog({commit},id){
+      console.log(id)
+      let {data} = await axios.patch(`http://localhost:2107/posts/update/log/${id.post_id}`,id)
+      console.log(data)
+    },
     async deletePost({commit},id){
       let {data} = await axios.delete(`http://localhost:2107/posts/delete/${id}`)
+    },
+    async deletePostLog({commit},id){
+      let {data} = await axios.delete(`http://localhost:2107/posts/delete/log/${id}`)
+    },
+    async addPost({commit},info){
+      console.log(info);
+      let data = await axios.post(`http://localhost:2107/posts/add`,info)
+      console.log(data)
     }
   },
   modules: {
