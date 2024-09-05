@@ -4,7 +4,7 @@
     <div v-if="token">
       <router-link to="/">Home</router-link> 
       <router-link to="/about">About</router-link> 
-      <router-link to="/post">Posts</router-link>
+      <router-link to="/posts">Posts</router-link>
       <router-link to="/profile" >Profile</router-link> 
       <div v-if="isAdmin">
         <router-link to="/admin">Admin</router-link>
