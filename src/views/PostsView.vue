@@ -15,7 +15,8 @@
                 </form>
             </template>
         </add-comp>
-        <div class="card" v-for="post in posts" :key="post.post_id">
+        <!-- <div v-for="user in users" :key="user.user_id"> -->
+            <div class="card" v-for="post in posts" :key="post.post_id">
             <div class="card-header">
                 {{ post.post_id }}
             </div>
@@ -32,10 +33,11 @@
                     <i class="bi bi-heart-fill"></i>
                 </div>
 
-                <div class="dropdown">
+                <div class="dropdown" v-if="post.user_id == userId">
                     <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-three-dots"></i>
                     </button>
+                    {{ userId }}
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">
                             <button class="btn btn-outline-dark" @click.prevent="removePost(post.post_id)">Delete Post</button>
@@ -69,6 +71,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- </div> -->
         
     </div>
 </template>
@@ -78,7 +82,6 @@ import EditComp from '@/components/EditPostComp.vue'
 export default {
     data(){
         return{
-            // user_id:undefined,
             content:undefined,
             url:undefined,
             post_id:undefined
@@ -91,6 +94,9 @@ export default {
     computed:{
         posts(){
             return this.$store.state.posts
+        },
+        userId(){
+            return localStorage.getItem('userId') 
         }
     },
     methods:{
@@ -98,12 +104,7 @@ export default {
             this.$store.dispatch('fetchPosts')
         },
         editPost(){
-            // if(userId == post_userID){
-
-                this.$store.dispatch('updatePostLog',this.$data)
-            // }else {
-            //     alert('You are not the owner of this post')
-            // }
+            this.$store.dispatch('updatePostLog',this.$data)
         },
         removePost(id){
             this.$store.dispatch('deletePostLog',id)

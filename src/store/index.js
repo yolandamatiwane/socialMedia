@@ -54,9 +54,13 @@ export default createStore({
       let role = JSON.parse(window.atob(data.token.split(".")[1]))
       $cookies.set('role',role.role)
       console.log(data.token)
+      localStorage.setItem('userId',data.user_id)
       await router.push('/')
       location.reload()
-
+      
+      // if(err){
+      //   router.push('/login')
+      // }
     },
     async fetchUser({commit}){
       try{
@@ -138,7 +142,23 @@ export default createStore({
       console.log(data)
       commit('setComments',data)
 
-    }
+    },
+    async addComment({commit},info){
+      console.log(info);
+      let data = await axios.post(`http://localhost:2107/post/comment`,info)
+      console.log(data)
+    },
+    async updateComment({commit},id){
+      console.log(id)
+      console.log(id.commment_id)
+      
+      let {data} = await axios.patch(`http://localhost:2107/post/${id.post_id}/comments/${id.comment_id}`,id)
+      console.log(data)
+    },
+    async deleteComment({commit},id){
+      console.log(id)
+      let {data} = await axios.delete(`http://localhost:2107/post/delete/${id.comment_id}`)
+    },
   },
   modules: {
   }
