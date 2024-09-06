@@ -13,7 +13,9 @@ export default createStore({
     posts:null,
     user:null,
     post:null,
-    single:null
+    single:null,
+    comments:null,
+    comment:null
     
   },
   getters: {
@@ -33,6 +35,12 @@ export default createStore({
     },
     setSingle(state,payload){
       state.single=payload
+    },
+    setComments(state,payload){
+      state.comments=payload
+    },
+    setComment(state,payload){
+      state.comment=payload
     }
   },
   actions: {
@@ -100,6 +108,8 @@ export default createStore({
       let {data} = await axios.patch(`http://localhost:2107/users/update/${userId.user_id}`,info)
       console.log(data);
     },
+
+    // Posts
     async updatePost({commit},id){
       console.log(id.post_id)
       let {data} = await axios.patch(`http://localhost:2107/posts/update/${id.post_id}`,id)
@@ -120,6 +130,14 @@ export default createStore({
       console.log(info);
       let data = await axios.post(`http://localhost:2107/posts/add`,info)
       console.log(data)
+    },
+    // Comments
+    async fetchComments({commit},id){
+      console.log(id)
+      let {data} = await axios.get(`http://localhost:2107/post/${id}/comments`)
+      console.log(data)
+      commit('setComments',data)
+
     }
   },
   modules: {
