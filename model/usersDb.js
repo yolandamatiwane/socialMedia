@@ -34,7 +34,7 @@ const logInDb= async(email)=>{
 const addUserDb = async(firstName,lastName,age,username,email,password,role,profile,background,gender)=>{
     await pool.query(`
         INSERT INTO Users(firstName,lastName,age,username,email,password,role,profile,background,gender)
-        VALUES(?,?,?,?,?,?)`,[firstName,lastName,age,username,email,password,role,profile,background,gender]
+        VALUES(?,?,?,?,?,?,?,?,?,?)`,[firstName,lastName,age,username,email,password,role,profile,background,gender]
     )
 }
 
