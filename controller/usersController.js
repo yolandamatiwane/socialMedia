@@ -32,7 +32,8 @@ const logIN = (req,res)=>{
    try {
         res.status(202).json({
             message:"User logged in successfully",
-            token:req.body.token
+            token:req.body.token,
+            user_id: req.body.user_id
         })
    } catch (err) {
     res.status(404).json({err:"There was an issue with logging in"})

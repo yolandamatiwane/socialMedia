@@ -2,12 +2,15 @@ import {getCommentsDb, getSingleCommentDb, addCommentDb, deleteComment,editComme
 import { logInDb } from "../model/usersDb.js";
 
 const fetchComments = async (req,res)=>{
-    let postId = req.params.post_id
-    try {
-        res.status(202).json(await getCommentsDb(postId))
-    } catch (err) {
-        res.status(404).json({err:"There is an issue with displaying posts"})
-    }
+    let postId = req.params.postId
+    console.log(postId);
+    
+    res.status(202).json(await getCommentsDb(postId))
+    
+    // try {
+    // } catch (err) {
+    //     res.status(404).json({err:"There is an issue with displaying posts"})
+    // }
 }
 
 const fetchSingleComment = async(req,res)=>{
@@ -19,9 +22,10 @@ const fetchSingleComment = async(req,res)=>{
 }
 
 const addComment = async (req,res)=>{
-    let {post_id,user_id,comment_text} = req.body
+    let {post_id,comment_text} = req.body
+    let user = await logInDb(req.user)
     try {
-        await addCommentDb(post_id,user_id,comment_text)
+        await addCommentDb(post_id,user.user_id,comment_text)
         res.status(202).json({message:"Added Comment successfully"})
     } catch (err) {
         res.status(404).json({err:"There is a issue with adding Comment"})
@@ -38,19 +42,19 @@ const removeComment = async(req,res)=>{
 }
 
 const updateComment = async (req,res)=>{
-    let {post_id,user_id,comment_text} = req.body
-    try {
+    let {post_id,comment_text} = req.body
+    let user = await logInDb(req.user)
+    // try {
         let post = await getSingleCommentDb(req.params.id)
 
         post_id? post_id=post_id : post_id = post.post_id
-        user_id? user_id=user_id : user_id = post.user_id
         comment_text? comment_text=comment_text : comment_text = post.comment_text
     
-        await editComment(req.params.id,post_id,user_id,comment_text)
+        await editComment(req.params.id,post_id,user.user_id,comment_text)
         res.status(202).json({message:"Updated post successfully"})
-    } catch (err) {
-        res.status(404).json({err:"There is an issue with updating post"})
-    }
+    // } catch (err) {
+    //     res.status(404).json({err:"There is an issue with updating post"})
+    // }
     
 
 }

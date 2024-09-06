@@ -1,10 +1,10 @@
 import { pool } from "../config/config.js";
 
-const getCommentsDb = async (post_id)=>{
+const getCommentsDb = async (postId)=>{
     let [data] = await pool.query(`
     SELECT *
     FROM Comments
-    WHERE post_id=?`[post_id])
+    WHERE post_id=?`,[postId])
     return data
 }
 

@@ -3,9 +3,9 @@ import { fetchComments, fetchSingleComment, addComment, updateComment, removeCom
 import { verifyAToken  } from '../middleware/authenticate.js'
 const router = express.Router()
 
-router.get('/:postId/comments',fetchComments)
-router.get('/:id',fetchSingleComment)
-router.post('/add',addComment)
-router.delete('/delete/:id',removeComment)
-router.patch('/update/:id', updateComment)
+router.get('/:id',verifyAToken,fetchSingleComment)
+router.get('/:postId/comments',verifyAToken,fetchComments)
+router.post('/comment',verifyAToken,addComment)
+router.delete('/delete/:id',verifyAToken,removeComment)
+router.patch('/:postId/comments/:id',verifyAToken, updateComment)
 export default router

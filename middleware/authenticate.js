@@ -27,6 +27,7 @@ const checkUser = async (req,res,next)=>{
             let token = jwt.sign({email:email,user_id:user_id,role:role},process.env.SECRET_KEY,{expiresIn:'1h'})
             console.log(email)
             req.body.token = token
+            req.body.user_id = user_id
             // res.status(202).json({token})
             next()
         } else{
@@ -39,19 +40,21 @@ const checkUser = async (req,res,next)=>{
 
 const verifyAToken = (req,res,next)=>{
     let {cookie} = req.headers
-    // console.log(cookie);
+    console.log('hehe');
     
     // checks if token exists first
     let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
     let secToken = token.split(';')[0]
-    // console.log(token)
+    // console.log(token);
+    // console.log(secToken)
     // if(!token){
     //     return res.status(401).json({message:"Unauthorized"})
     // }
     jwt.verify(secToken,process.env.SECRET_KEY,(err,decoded)=>{
         if(err){
-            res.json({message:'Token is invalid'})
+            res.json({err:'Token is invalid'})
             // throw err 
+            return
         }
         // req.body.username = decoded.username
         req.user = decoded.email
