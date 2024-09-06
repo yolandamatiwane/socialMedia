@@ -1,8 +1,10 @@
 import {getCommentsDb, getSingleCommentDb, addCommentDb, deleteComment,editComment} from '../model/commentsDb.js'
+import { logInDb } from "../model/usersDb.js";
 
 const fetchComments = async (req,res)=>{
+    let postId = req.params.post_id
     try {
-        res.status(202).json(await getCommentsDb())
+        res.status(202).json(await getCommentsDb(postId))
     } catch (err) {
         res.status(404).json({err:"There is an issue with displaying posts"})
     }

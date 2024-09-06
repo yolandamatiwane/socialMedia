@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(express.static('public'))
 app.use('/users',userRouter)
 app.use('/posts',postRouter)
-app.use('/comments',commentRouter)
+app.use('/post',commentRouter)
 app.listen(port,()=>{
     console.log('http://localhost:'+port)
 })
