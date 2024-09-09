@@ -1,11 +1,9 @@
 <template>
-    <div>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal3">
-            Edit
+    <div class="edit">
+        <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+            <i class="bi bi-pencil-square"></i>
         </button>
 
-        <!-- Modal -->
         <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -30,6 +28,13 @@ export default {
     
 }
 </script>
-<style>
-    
+<style scoped>
+    .btn-custom{
+        color: white;
+        height: 5px;
+    }
+    .edit{
+        position: relative;
+        bottom: 12px;
+    }
 </style>

@@ -2,7 +2,9 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import {useCookies} from 'vue-cookies'
+import {toast} from 'vue3-toastify'
 import router from '@/router'
+import "vue3-toastify/dist/index.css"
 const apiUrl = 'https://socialmedia-3kos.onrender.com/'
 
 axios.defaults.withCredentials = true
@@ -67,7 +69,9 @@ export default createStore({
         let {data} = await axios.get('http://localhost:2107/users/user')
         // console.log(data)
         commit('setUser',data)
-
+        if(data.err){
+          router.push('/login')
+        }
       }catch(err){
         console.log(err)
       }
@@ -78,6 +82,9 @@ export default createStore({
         let {data} = await axios.get('http://localhost:2107/users/')
         console.log(data)
         commit('setUsers',data)
+        if(data.err){
+          router.push('/login')
+        }
 
       }catch(err){
         console.log(err)
@@ -94,11 +101,18 @@ export default createStore({
     async fetchPosts({commit}){
       let {data} = await axios.get('http://localhost:2107/posts')
       commit('setPosts',data)
+      if(data.err){
+        router.push('/login')
+      }
+      
     },
     async fetchPost({commit}){
       let {data} = await axios.get('http://localhost:2107/posts/post')
       console.log(data)
       commit('setPosts',data)
+      if(data.err){
+        router.push('/login')
+      }
     },
     async fetchPostById({commit},id){
       console.log(id)
@@ -141,7 +155,9 @@ export default createStore({
       let {data} = await axios.get(`http://localhost:2107/post/${id}/comments`)
       console.log(data)
       commit('setComments',data)
-
+      if(data.err){
+        router.push('/login')
+      }
     },
     async addComment({commit},info){
       console.log(info);

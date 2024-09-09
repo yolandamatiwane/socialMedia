@@ -5,16 +5,16 @@
       <router-view/>
     </div>
   </div>
-  <footer-comp/>
+  <!-- <footer-comp/> -->
 </template>
 
 <script>
-import NavComp from '@/components/NavComp.vue'
-import FooterComp from './components/FooterComp.vue';
+import NavComp from '@/components/NavComp.vue';
+// import FooterComp from './components/FooterComp.vue';
   export default {
     components:{
       NavComp,
-      FooterComp
+      // FooterComp
     }, computed:{
       token(){
         return this.$cookies.get('token');
@@ -36,11 +36,15 @@ import FooterComp from './components/FooterComp.vue';
 }
 #appDiv{
   display: flex;
+  /* background-color: #36454F; */
 }
 #main-content {
-  margin-left: 300px; /* Adjust based on navbar height to avoid overlap */
+  width: 100%;
+  margin-left: 300px;
+  /* margin-top: 10px; */
 }
 #main-content.no-margin {
-  margin-left: 50px /* No margin for when there is no token */
+  /* margin: 10px 100px; */
+  margin-left: 210px;
 }
 </style>

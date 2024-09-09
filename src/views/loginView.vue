@@ -68,7 +68,7 @@ export default {
     background-repeat: no-repeat; /* Prevent image from repeating */
     min-height:82vh; /* Make sure the container covers at least the full viewport height */
     padding: 20px; /* Optional: Add some padding if needed */
-    margin:50px ;
+    margin:55px ;
     font-weight: 600;
     color: #36454F;
     border-radius: 10px;

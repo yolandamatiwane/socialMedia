@@ -48,10 +48,15 @@
           <input type="text" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="basic-addon1" v-model="searchTerm">
           </div>
           <div>
-            <!-- <div v-for="user in filteredUsers" :key="user.user_id" class="search-result">
-              <img :src="user.profile" id="userPic">
-              <div>{{ user.firstName }} {{ user.lastName }}</div>
-            </div> -->
+            <div v-for="user in limitedSearchResults" :key="user.user_id" class="search-result">
+              <div>
+                <img :src="user.profile" id="userSearch">
+                {{ user.firstName }} {{ user.lastName }}
+              </div>
+              <div class="addPerson">
+                <h3><i class="bi bi-person-add"></i></h3>
+              </div>
+            </div>
           </div>
           <div>
             <h4>Recommendations:</h4>
@@ -87,7 +92,8 @@ export default {
   name: 'HomeView',
   data(){
     return{
-      searchTerm:''
+      searchTerm:'',
+      maxSearchResults: 4
     }
   },
   computed:{
@@ -97,13 +103,16 @@ export default {
     posts(){
       return this.$store.state.posts || []
     },
-    // filteredUsers() {
-    //   const searchTermLower = this.searchTerm.toLowerCase();
-    //   return this.users.filter(user => 
-    //     user.firstName.toLowerCase().includes(searchTermLower) ||
-    //     user.lastName.toLowerCase().includes(searchTermLower)
-    //   );
-    // }
+    filteredUsers() {
+      const searchTermLower = this.searchTerm.toLowerCase();
+      return this.users?.filter(user => 
+        user.firstName.toLowerCase().includes(searchTermLower) ||
+        user.lastName.toLowerCase().includes(searchTermLower)
+      )
+    },
+    limitedSearchResults() {
+      return this.filteredUsers.slice(0, this.maxSearchResults);
+    }
   }
   ,
   methods:{
@@ -148,16 +157,16 @@ export default {
 .btn{
   color:white;
 }
-/* body{
-  background-color: black;
-} */
 #bodyImg{
   width: 100%;
   height: 150px;
 
 }
-.card-body{
-  /* border-radius: 60px; */
+#userSearch{
+  width: 50px;
+}
+.bi{
+  width:fit-content;
 }
 .card{
   width: 80%;
@@ -193,6 +202,8 @@ h6{
   display: flex;
   align-items: center;
   margin: 10px 0;
+  justify-content: space-between;
+  border-bottom: #a4d4a1;
 }
 
 .search-result img {

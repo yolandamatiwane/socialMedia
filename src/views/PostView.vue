@@ -9,10 +9,10 @@
                 <img v-if="post.url" :src="post.url" alt="Post Image">
             </div>
             <div class="icons">
-                    <button class="btn">
-                        <i class="bi bi-chat-dots"></i>
-                    </button>
-                    <i class="bi bi-heart-fill"></i>
+                <button class="btn">
+                    <i class="bi bi-chat-dots"></i>
+                </button>
+                <i class="bi bi-heart-fill"></i>
             </div>
         </div>
         
@@ -29,10 +29,6 @@
                     <edit-comp>
                         <template #editComm>
                             <form>
-                                <!-- <div class="mb-3">
-                                    <label for="exampleInputCommentId1" class="form-label">CommentId</label>
-                                    <input type="text" class="form-control" id="exampleInputCommentId1" v-model="comment_id">
-                                </div> -->
                                 <div class="mb-3">
                                     <label for="exampleInputComment1" class="form-label">Comment</label>
                                     <input type="text" class="form-control" id="exampleInputComment1" v-model="comment_text">
@@ -110,7 +106,7 @@ export default {
 </script>
 <style scoped>
 #main{
-    
+    background-color: #36454F;
 }
 .card img{
     width: 100%;
