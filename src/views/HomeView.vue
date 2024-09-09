@@ -1,27 +1,78 @@
 <template>
-  <div>
+  <div class="mainHome">
     <div class="container-fluid text-center">
       <div class="row">
-        <div class="col-8" id="main">
+        <div class="col-7" id="main">
           <div class="flex">
             <div id="homeUserDets" v-for="user in users" :key="user.user_id">
             <img :src="user.profile" id="userPic">
             <div>{{ user.firstName }}</div>
-          </div>
+            </div>
           </div>
           <div>
             <div class="card" v-for="post in posts" :key="post.post_id">
+              <div class="card-header">
+                <div>
+                  <img :src="post.profile" id="userImage">
+                  {{ post.firstName }} {{ post.lastName }}
+                </div>
+                <div>
+                  <i class="bi bi-three-dots"></i>
+                </div>
+              </div>
               <div class="card-body">
                 <h5>{{ post.content }}</h5>
-                <img :src="post.url" v-if="post.url!=null" class="fit-bottom">
-
+                <div v-if="post.url && post.url!==' '">
+                  <img :src="post.url" class="fit-bottom" id="bodyImg">
+                </div>
               </div>
-
+              <div class="card-footer">
+                <div>
+                  <i class="bi bi-heart-fill"></i> Like
+                  <button @click="navigateToPost(post.post_id)" class="btn">
+                    <i class="bi bi-chat-dots-fill"></i>
+                    comments
+                  </button>
+                  <i class="bi bi-send-fill"></i>
+                </div>
+                <div>
+                  <i class="bi bi-bookmark-fill"></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col">
-          3 of 3
+        <div class="col" id="Resources">
+          <div class="input-group mb-3">
+          <button class="btn btn-custom"><i class="bi bi-search"></i></button>
+          <input type="text" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="basic-addon1" v-model="searchTerm">
+          </div>
+          <div>
+            <!-- <div v-for="user in filteredUsers" :key="user.user_id" class="search-result">
+              <img :src="user.profile" id="userPic">
+              <div>{{ user.firstName }} {{ user.lastName }}</div>
+            </div> -->
+          </div>
+          <div>
+            <h4>Recommendations:</h4>
+            <h6>Dealing with grief can be quite overwhelming, below we have some suggestions outside of this app that could possibly assist you further.</h6>
+            <div class="card">
+              <h6 id="h">Counseling Services:</h6>
+              
+
+            </div>
+            <div class="card">
+              <h6 id="h">Support Hotlines:</h6>
+
+
+            </div>
+            <div class="card">
+              <h6 id="h">Books and Media:</h6>
+
+
+            </div>
+            <footer-comp/>
+          </div>
         </div>
       </div>
     </div>
@@ -31,17 +82,28 @@
 
 <script>
 // @ is an alias to /src
-
-
+import FooterComp from '@/components/FooterComp.vue';
 export default {
   name: 'HomeView',
+  data(){
+    return{
+      searchTerm:''
+    }
+  },
   computed:{
     users(){
-      return this.$store.state.users
+      return this.$store.state.users || []
     },
     posts(){
-      return this.$store.state.posts
-    }
+      return this.$store.state.posts || []
+    },
+    // filteredUsers() {
+    //   const searchTermLower = this.searchTerm.toLowerCase();
+    //   return this.users.filter(user => 
+    //     user.firstName.toLowerCase().includes(searchTermLower) ||
+    //     user.lastName.toLowerCase().includes(searchTermLower)
+    //   );
+    // }
   }
   ,
   methods:{
@@ -55,25 +117,91 @@ export default {
   mounted() {
     this.getPosts(),
     this.getUsers()
+  },
+  components:{
+    FooterComp
   }
 }
 </script>
 <style scoped>
+.mainHome{
+  background-color: #36454F;
+}
 #userPic{
-  width: 20%;
+  width: 50%;
   border-radius: 50%;
-  border: 3px solid navy;
+  border: 5px solid #a4d4a1;
+}
+#userImage{
+  width:40px;
+  border-radius: 50%;
 }
 #homeUserDets{
   font-size:10px;
+  color: white;
+  border-bottom: 2px solid white;
   /* display: flex; */
 }
 .flex{
   display: flex;
 }
+.btn{
+  color:white;
+}
 /* body{
   background-color: black;
 } */
+#bodyImg{
+  width: 100%;
+  height: 150px;
 
+}
+.card-body{
+  /* border-radius: 60px; */
+}
+.card{
+  width: 80%;
+  margin: 10px auto;
+  border: none;
+  /* color: white */
+}
+.card-header,.card-footer{
+  background-color: #36454F;
+  color: white;
+  text-align:start;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: #a4d4a1; */
+}
+h4{
+  color: #a4d4a1;
+  /* color: white; */
+}
+h6{
+  color: white;
+}
+#h{
+  color: #36454F;
+}
+.btn-custom{
+  background-color: #a4d4a1;
+}
+#Resources{
+  border-left: 3px solid white;
+}
+.search-result {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
 
+.search-result img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.search-result div {
+  color: white;
+}
 </style>

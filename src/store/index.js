@@ -12,7 +12,7 @@ export default createStore({
     users:null,
     posts:null,
     user:null,
-    post:null,
+    // post:null,
     single:null,
     comments:null,
     comment:null
@@ -30,9 +30,9 @@ export default createStore({
     setPosts(state,payload){
       state.posts=payload
     },
-    setPost(state,payload){
-      state.post=payload
-    },
+    // setPost(state,payload){
+    //   state.post=payload
+    // },
     setSingle(state,payload){
       state.single=payload
     },
@@ -55,7 +55,7 @@ export default createStore({
       $cookies.set('role',role.role)
       console.log(data.token)
       localStorage.setItem('userId',data.user_id)
-      await router.push('/')
+      await router.push('/home')
       location.reload()
       
       // if(err){
@@ -76,7 +76,7 @@ export default createStore({
     async fetchUsers({commit}){
       try{
         let {data} = await axios.get('http://localhost:2107/users/')
-        // console.log(data)
+        console.log(data)
         commit('setUsers',data)
 
       }catch(err){
@@ -98,7 +98,7 @@ export default createStore({
     async fetchPost({commit}){
       let {data} = await axios.get('http://localhost:2107/posts/post')
       console.log(data)
-      commit('setPost',data)
+      commit('setPosts',data)
     },
     async fetchPostById({commit},id){
       console.log(id)

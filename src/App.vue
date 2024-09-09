@@ -1,43 +1,26 @@
 <template>
   <div id="appDiv">
-    <nav>
-    <div v-if="token">
-      <router-link to="/">Home</router-link> 
-      <router-link to="/about">About</router-link> 
-      <router-link to="/posts">Posts</router-link>
-      <router-link to="/profile" >Profile</router-link> 
-      <div v-if="isAdmin">
-        <router-link to="/admin">Admin</router-link>
-      </div>
-
-      <button @click="logOut()" class="btn btn-dark">LogOut</button>
-
+    <nav-comp/>
+    <div id="main-content" :class="{ 'no-margin': !hasToken }">
+      <router-view/>
     </div>
-    <div v-else>
-      <router-link to="/login">Login</router-link>|
-      <router-link to="/register">Register</router-link>
-    </div>
-    </nav>
-  <router-view/>
   </div>
+  <footer-comp/>
 </template>
 
 <script>
+import NavComp from '@/components/NavComp.vue'
+import FooterComp from './components/FooterComp.vue';
   export default {
-    computed:{
+    components:{
+      NavComp,
+      FooterComp
+    }, computed:{
       token(){
         return this.$cookies.get('token');
       },
-      isAdmin(){
-        return this.$cookies.get('role') == 'admin'
-      }
-    },
-    methods: {
-      async logOut(){
-        this.$cookies.remove('token')
-        await this.$router.push('/login')
-        location.reload()
-
+      hasToken() {
+        return !!this.token; 
       }
     }
   }
@@ -49,31 +32,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #36454F;
 }
 #appDiv{
   display: flex;
 }
-
-nav {
-  width: 33%;
-  padding: 30px;
+#main-content {
+  margin-left: 300px; /* Adjust based on navbar height to avoid overlap */
 }
-nav div{
-  display: flex;
-  flex-direction: column;
-}
-
-nav a {
-  font-weight: bold;
-  color: #05553a;
-  /* height: 90px; */
-  text-decoration: none;
-}
-
-nav a.router-link-exact-active {
-  color: #032d1a;
-  border-radius: 20px;
-  /* background-color: #05553a33; */
+#main-content.no-margin {
+  margin-left: 50px /* No margin for when there is no token */
 }
 </style>

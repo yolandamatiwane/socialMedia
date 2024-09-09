@@ -15,14 +15,12 @@
                 </form>
             </template>
         </add-comp>
-        <!-- <div v-for="user in users" :key="user.user_id"> -->
             <div class="card" v-for="post in posts" :key="post.post_id">
             <div class="card-header">
-                {{ post.post_id }}
+                {{ post.firstName }} {{ post.lastName }}
             </div>
             <div class="card-body">
                 {{ post.content }}
-                <!-- <img :src="post.url" v-if="post.url!=null"> -->
             </div>
 
             <div class="card-footer">

@@ -1,7 +1,7 @@
 <template>
     <footer>
     <p>
-        comfortCorner &copy; {{ displayYear }}
+        ComfortCorner &copy; {{ displayYear }}
     </p> 
     </footer>
         
@@ -21,5 +21,9 @@ export default {
 }
 </script>
 <style scoped>
-  
+  footer{
+    color: #a4d4a1;
+    background-color: #36454F;
+    bottom: 0;
+  }
 </style>

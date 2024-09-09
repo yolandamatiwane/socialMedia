@@ -4,6 +4,10 @@ import HomeView from '../views/HomeView.vue'
 const routes = [
   {
     path: '/',
+    redirect: '/login' // Redirect to login page by default
+  },
+  {
+    path: '/home',
     name: 'home',
     component: HomeView
   },
