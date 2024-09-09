@@ -44,7 +44,7 @@ const verifyAToken = (req,res,next)=>{
     
     // checks if token exists first
     let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
-    let secToken = token.split(';')[0]
+    let secToken = token?.split(';')[0]
     // console.log(token);
     // console.log(secToken)
     // if(!token){

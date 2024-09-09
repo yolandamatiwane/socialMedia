@@ -2,7 +2,7 @@ import { pool } from "../config/config.js";
 
 const getPostsDb = async ()=>{
     let [data] = await pool.query(`
-    SELECT *,firstName,lastName,profile
+    SELECT *,Users.firstName,Users.lastName,profile
     FROM Posts
     INNER JOIN Users
     ON Posts.user_id = Users.user_id`)
@@ -24,7 +24,7 @@ const getSingleUserPostDb = async (id)=>{
     FROM Posts
     INNER JOIN Users
     ON Posts.user_id = Users.user_id 
-    WHERE user_id = ?`, [id])
+    WHERE Posts.user_id = ?`, [id])
     return data
 }
 const addPostDb = async(user_id,content,url)=>{
