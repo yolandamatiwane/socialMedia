@@ -44,7 +44,7 @@ import NavComp from '@/components/NavComp.vue';
   /* margin-top: 10px; */
 }
 #main-content.no-margin {
-  /* margin: 10px 100px; */
-  margin-left: 210px;
+  /* margin: 5px 100px; */
+  margin-left: 0px;
 }
 </style>

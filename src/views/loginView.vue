@@ -63,11 +63,12 @@ export default {
 <style scope>
 .container-fluid {
     background-image: url('https://yolandamatiwane.github.io/socialMediaImg/ProjectSignUp.jpg');
-    background-size: cover; /* Ensure the image covers the entire container */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    min-height:82vh; /* Make sure the container covers at least the full viewport height */
-    padding: 20px; /* Optional: Add some padding if needed */
+    background-size: cover; 
+    background-position: center; 
+    
+    background-repeat: no-repeat;
+    min-height:82vh;
+    padding: 20px; 
     margin:55px ;
     font-weight: 600;
     color: #36454F;
