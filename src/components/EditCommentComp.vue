@@ -1,6 +1,6 @@
 <template>
     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Edit
+        <i class="bi bi-pencil-square"></i>
     </button>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -28,6 +28,10 @@ export default {
     
 }
 </script>
-<style>
+<style scoped>
+    button{
+        background-color: #a4d4a1;
+        border: none;
+    }
     
 </style>

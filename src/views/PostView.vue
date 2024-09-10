@@ -1,31 +1,49 @@
 <template>
-    <div v-if="post" id="main">
-        <div class="card">
+    <div id="color">
+        <div class="card-group" id="main">
+        <div v-if="post"  class="card">
             <div class="card-header">
-                {{ post.post_id }}
+                <div>
+                    <img :src="post.profile" id="userImage">
+                    {{ post.firstName }} {{ post.lastName }}
+                </div>
+                <div>
+                  <i class="bi bi-three-dots"></i>
+                </div>
             </div>
             <div class="card-body">
                 {{ post.content }}
                 <img v-if="post.url" :src="post.url" alt="Post Image">
             </div>
-            <div class="icons">
-                <button class="btn">
-                    <i class="bi bi-chat-dots"></i>
-                </button>
-                <i class="bi bi-heart-fill"></i>
-            </div>
+            <div class="card-footer">
+                <div>
+                  <i class="bi bi-heart-fill"></i> Like
+                  <button @click="navigateToPost(post.post_id)" class="btn">
+                    <i class="bi bi-chat-dots-fill"></i>
+                    comments
+                  </button>
+                  <i class="bi bi-send-fill"></i>
+                </div>
+                <div>
+                  <i class="bi bi-bookmark-fill"></i>
+                </div>
+              </div>
+            
         </div>
         
-        <div class="card" v-for="comment in comments" :key="comment.comment_id">
+        <div id="comment" class="card" v-for="comment in comments" :key="comment.comment_id">
             <div class="card-header">
-                {{ comment.comment_id }}
-
+                <div>
+                    <img :src="comment.profile" id="userImage">
+                    {{ comment.firstName }} {{ comment.lastName }}
+                </div>
+                
             </div>
             <div class="input-group" v-if="userId == comment.user_id">
                 <div class="card-body">
                     {{ comment.comment_text }}
                 </div>
-                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">    
+                <div class="btn-group" role="group" aria-label="Vertical button group">    
                     <edit-comp>
                         <template #editComm>
                             <form>
@@ -37,7 +55,7 @@
                             </form>
                         </template>
                     </edit-comp>
-                    <button type="button" class="btn btn-dark" @click="deletComment(comment.comment_id)"><i class="bi bi-x-square"></i></button>
+                    <button type="button" class="btn btn-custom" @click="deletComment(comment.comment_id)"><i class="bi bi-trash3-fill"></i></button>
                 </div>
             </div>
             <div v-else>
@@ -49,10 +67,11 @@
         <div class="commentArea">
             <div class="input-group mb-3">
                 <textarea class="form-control" placeholder="add your comment here..." v-model="comment_text" id="textArea" rows="3"></textarea>
-                <button class="btn btn-dark" @click="addCommment()"><i class="bi bi-send-plus-fill"></i></button>
+                <button class="btn btn-custom" @click="addCommment()"><i class="bi bi-send-plus-fill"></i></button>
             </div>
         </div>
         
+        </div>
     </div>
 </template>
 <script>
@@ -105,30 +124,72 @@ export default {
 }
 </script>
 <style scoped>
-#main{
+#color {
     background-color: #36454F;
+    width: 100%;
+    min-height: 100vh !important; 
+    margin: 0; 
+    padding: 0; 
+    bottom: 0;
 }
 .card img{
     width: 100%;
     height:300px;
 }
+/* #comment{
+    height: 10px !important;
+} */
 .card{
     width:30rem;
+    border: none;
 }
 .commentArea{
     display: flex;
     /* height: 30px; */
     width: 100%;
 }
-/* .commentArea button{
-    height: fit-content;
-    align-self: center;
-} */
-.commentArea .mb-3{
-    width: 100%;  
-}
-/* .btn-group-vertical{
-    right: 0;
-} */
 
+.commentArea .mb-3, #main .card{
+    width: 70%;  
+    margin: 5px 150px;
+}
+
+#main{
+    background-color: #36454F;
+    display:flex;
+    flex-direction: column;
+    /* min-height: 100vh; */
+    
+}
+
+.card-header,.card-footer{
+    background-color: #36454F;
+    color: white;
+    text-align:start;
+    display: flex;
+    justify-content: space-between;
+    /* border: none; */
+    /* background-color: #a4d4a1; */
+}
+.card-body{
+    align-items: center;
+    height: 40px;
+    /* color: white; */
+}
+#comment #userImage{
+    width: 20px;
+    height: 20px;
+    /* background-color: #36454F; */
+}
+
+#userImage{
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+}
+.btn-custom{
+    background-color: #a4d4a1;
+    border: none;
+    color: white;
+}
 </style>

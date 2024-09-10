@@ -30,7 +30,7 @@ export default {
 </script>
 <style scoped>
     .btn-custom{
-        color: white;
+        color: rgb(7, 0, 0);
         height: 5px;
     }
     .edit{

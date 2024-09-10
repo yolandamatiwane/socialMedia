@@ -1,7 +1,7 @@
 <template>
     <div>
         <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#exampleModal5">
-            <i class="bi bi-camera-fill"></i>
+            <i id="cam" class="bi bi-camera-fill"></i>
         </button>
 
         <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel5" aria-hidden="true">
@@ -33,6 +33,8 @@ export default {
     .btn-custom{
         background-color: #a4d4a1;
         color: white;
+        height: 90px;
+        border-right:2px solid white;
     }
-    
+
 </style>

@@ -1,10 +1,11 @@
 <template>
     <div class="mainCard">
         <div id="AddingPost">
-            <div class="input-group">
-                <div >
-                    <input type="text" class="form-control" id="exampleInputContent1" placeholder="What are you thinking?" v-model="content">
-                </div>
+            <div class="input-group mb-3">
+                <!-- <div > -->
+                    <textarea class="form-control" placeholder="What are you thinking?" v-model="content" id="textArea" rows="3"></textarea>
+                    <!-- <input type="text" class="form-control" id="exampleInputContent1" placeholder="What are you thinking?" v-model="content"> -->
+                <!-- </div> -->
                 <add-comp>
                     <template #addingPost>
                         <form>
@@ -31,6 +32,7 @@
               </div>
             <div class="card-body">
                 {{ post.content }}
+                <!-- <img :src="post.url" class="fit-bottom" id="bodyImg"> -->
             </div>
 
             <div class="card-footer">
@@ -177,21 +179,13 @@ export default {
         background-color: #a4d4a1;
     }
     #AddingPost .input-group{
-        /* margin-left: 300px; */
         width: 100% !important;
-        /* position: relative;
-        left: 100px; */
         align-self: center;
     }
+
     #AddingPost{
-        margin-top: 20px;
+        margin: 10px 120px 50px;
     }
 
-    #exampleInputContent1{
-        width: 700px !important;
-        /* height: 100px; */
-        /* margin: 10px auto; */
-        margin-left: 300px;
-    }
 
 </style>

@@ -36,15 +36,19 @@ import NavComp from '@/components/NavComp.vue';
 }
 #appDiv{
   display: flex;
+  min-height: 100vh;
   /* background-color: #36454F; */
 }
 #main-content {
   width: 100%;
   margin-left: 300px;
+  background-color: #36454F;
+
   /* margin-top: 10px; */
 }
 #main-content.no-margin {
-  /* margin: 5px 100px; */
+  min-height: 100vh;
   margin-left: 0px;
+  background-color: white;
 }
 </style>

@@ -28,6 +28,12 @@
           Profile
         </h4>
       </router-link> 
+      <router-link to="/contact">
+        <h4>          
+          <i class="bi bi-postcard-fill"></i>
+          Contact
+        </h4>
+      </router-link> 
       <div v-if="isAdmin">
         <router-link to="/admin">
           <h4>

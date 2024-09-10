@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="table">
         <h5>Posts Table</h5>
         <div class="table-responsive-sm">
             <table class="table">
@@ -21,7 +21,7 @@
                         <td>{{post.user_id}}</td>
                         <td>{{post.content}}</td>
                         <td><img :src="post.url" id="postURL"></td>
-                        <td><button class="btn btn-dark" @click.prevent="removePost(post.post_id)">Delete Post</button></td>
+                        <td><button class="btn btn-dark" @click.prevent="removePost(post.post_id)"><i class="bi bi-trash3-fill"></i></button></td>
                         <td>
                             <edit-comp>
                                 <template #updatePost>
@@ -99,6 +99,9 @@ export default {
 <style scoped>
     #postURL{
         width: 18%;
+    }
+    #table{
+        margin: auto 100px;
     }
     
 </style>
