@@ -14,7 +14,7 @@ export default createStore({
     users:null,
     posts:null,
     user:null,
-    // post:null,
+    post:null,
     single:null,
     comments:null,
     comment:null
@@ -32,9 +32,9 @@ export default createStore({
     setPosts(state,payload){
       state.posts=payload
     },
-    // setPost(state,payload){
-    //   state.post=payload
-    // },
+    setPost(state,payload){
+      state.post=payload
+    },
     setSingle(state,payload){
       state.single=payload
     },
@@ -64,6 +64,7 @@ export default createStore({
       //   router.push('/login')
       // }
     },
+    // fetching user using login 
     async fetchUser({commit}){
       try{
         let {data} = await axios.get('http://localhost:2107/users/user')
@@ -75,6 +76,20 @@ export default createStore({
       }catch(err){
         console.log(err)
       }
+    },
+    // fetching user by id 
+    async fetchUserById({commit},id){
+      // try{
+      console.log(id)
+        let {data} = await axios.get(`http://localhost:2107/users/${id}`)
+        console.log(data)
+        commit('setUser',data)
+        if(data.err){
+          router.push('/login')
+        }
+      // }catch(err){
+      //   console.log(err)
+      // }
 
     },
     async fetchUsers({commit}){
@@ -109,7 +124,7 @@ export default createStore({
     async fetchPost({commit}){
       let {data} = await axios.get('http://localhost:2107/posts/post')
       console.log(data)
-      commit('setPosts',data)
+      commit('setPost',data)
       if(data.err){
         router.push('/login')
       }

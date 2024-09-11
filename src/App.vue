@@ -36,11 +36,13 @@ import NavComp from '@/components/NavComp.vue';
 }
 #appDiv{
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   /* background-color: #36454F; */
 }
 #main-content {
-  width: 100%;
+  /* width: 100vw; */
+  height: 100vh;
   margin-left: 300px;
   background-color: #36454F;
 
@@ -51,5 +53,41 @@ import NavComp from '@/components/NavComp.vue';
   /* width: 100vw; */
   margin: 0px;
   background-color: white;
+}
+@media(max-width:1300px){
+  #main-content{
+    width: 100%;
+    margin-left: 250px;
+  }
+}
+@media (max-width: 1100px){
+  #main-content {
+  width: 100%;
+  margin-left: 200px;
+  background-color: #36454F;
+  }
+}
+@media(max-width:1000px){
+  #main-content{
+    margin-left: 200px;
+  }
+}
+@media(max-width:900px){
+  #appDiv{
+    flex-direction: row-reverse;
+  }
+  #main-content{
+
+  }
+}
+@media (max-width: 600px){
+  #main-content {
+  width: 100%;
+  margin: 0px;
+  background-color: #36454F;
+}
+#main-content.no-margin{
+  margin: 0px;
+}
 }
 </style>

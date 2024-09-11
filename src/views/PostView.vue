@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 {{ post.content }}
-                <img v-if="post.url" :src="post.url" alt="Post Image">
+                <!-- <img v-if="post.url" :src="post.url" alt="Post Image"> -->
             </div>
             <div class="card-footer">
                 <div>

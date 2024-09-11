@@ -7,38 +7,38 @@
       <router-link to="/home">
         <h4>
           <i class="bi bi-house-door-fill"></i>
-          Home
+          <label>Home</label>
         </h4>
       </router-link> 
       <router-link to="/about">
         <h4>
           <i class="bi bi-info-circle"></i>
-          About
+          <label>About</label>
         </h4>
       </router-link> 
       <router-link to="/posts">
         <h4>
           <i class="bi bi-file-text"></i>
-          Posts
+          <label>Posts</label>
         </h4>
       </router-link>
       <router-link to="/profile">
         <h4>          
           <i class="bi bi-person-lines-fill"></i>
-          Profile
+          <label>Profile</label>
         </h4>
       </router-link> 
       <router-link to="/contact">
         <h4>          
           <i class="bi bi-postcard-fill"></i>
-          Contact
+          <label>Contact</label>
         </h4>
       </router-link> 
       <div v-if="isAdmin">
         <router-link to="/admin">
           <h4>
             <i class="bi bi-gear"></i>
-            Admin
+            <label>Admin</label>
           </h4>
         </router-link>
       </div>
@@ -108,7 +108,36 @@ nav a.router-link-exact-active {
 }
 
 /* mobile */
-/* @media (max-width: 768px) {
+/* @media (max-width: 1100px){
+  nav {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-shadow: none;
+  }
+
+  nav div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+  }
+
+  nav a {
+    font-size: 14px; 
+    padding: 10px; 
+  }
+
+  .navLogo {
+    height: auto;
+    margin-bottom: 10px;
+  }
+} */
+@media (max-width: 600px) {
   nav {
     width: 100%;
     height: auto;
@@ -138,6 +167,6 @@ nav a.router-link-exact-active {
     height: auto;
     margin-bottom: 10px;
   }
-} */
+}
 
 </style>

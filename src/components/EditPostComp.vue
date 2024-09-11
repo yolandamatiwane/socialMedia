@@ -1,6 +1,6 @@
 <template>
     <div class="edit">
-        <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+        <button @click="callParentMethod(id)" type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#exampleModal3">
             <i class="bi bi-pencil-square"></i>
         </button>
 
@@ -25,7 +25,21 @@
 </template>
 <script>
 export default {
-    
+    props:{
+        fetchPostById:{
+            type:Function,
+            required:true
+        },
+        id:{
+            type:Number,
+        }
+    },
+    methods: {
+        callParentMethod(param) {
+        // Call the method passed from the parent
+        this.fetchPostById(param);
+    }
+}
 }
 </script>
 <style scoped>

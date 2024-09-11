@@ -119,7 +119,7 @@ export default {
     background-repeat: no-repeat; 
     min-height:80vh;
     padding: 20px; 
-    margin:50px 100px ;
+    margin:70px 100px ;
     font-weight: 600;
     color: #36454F;
     border-radius: 10px;
@@ -153,10 +153,11 @@ form .form-control{
     width: 200px;
     margin-left: 30px;
 }
-#name{
+#name {
     display: flex;
-    justify-content: center;
-}
+    flex-wrap: wrap; 
+    gap: 15px; 
+  }
 .btn-custom{
     background-color: #a4d4a1;
     color: #36454F;
@@ -181,7 +182,7 @@ span,h5{
 /* Media Queries */
 @media(max-width:1100px){
     .container{
-        margin: 0px;
+        margin: auto;
         min-height: 100vh;
         min-width: 100vw;
     }
@@ -192,35 +193,50 @@ span,h5{
 }
 @media(max-width:750px){
     #name{
-        display:flex;
         flex-direction:column;
     }
     form{
         margin: auto 0px;
     }
-}
-@media(max-width:578px){
-    .container{
-        display:flex;
-        flex-direction:column-reverse !important;
+    .row{
+        margin: 0px !important;
     }
 }
-@media (max-width: 350px) {
-  .container {
-    padding: 5px;
-    margin:0px;
-  }
-  .col-12 img {
-    width: 100%;
-  }
+@media(max-width:576px){
+    form{
+        margin: 0px;
+        width: 100%;
+    }
+    #name{
+      width: 100%;
+      gap: 15px;
+    }
+    .mb-3 {
+      margin-left: 0; /* Remove left margin */
+    }
+    
+    .form-control {
+      width: 100%; /* Ensure form controls take full width */
+    }
 
+    .container {
+      margin: 0;
+    }
+
+}
+
+@media (max-width: 350px) {
+    
+  .container {
+    margin:0px;
+    width: 100vw;
+  }
   .btn-custom, #custom {
     font-size: 14px;
   }
   form{
-    width:100% !important;
-    margin: 0px !important;
-
-  }
+        margin: 0px !important;
+        width: 100%;
+    }
 }
 </style>

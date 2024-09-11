@@ -46,7 +46,7 @@
                 </div>
                 <div id="edit">
                   <i id="book" class="bi bi-bookmark-fill"></i>
-                    <edit-comp v-if="post.user_id == userId">
+                    <edit-comp :id="post.post_id" :fetchPostById="fetchPostById" v-if="post.user_id == userId">
                                 <template #updatePost>
                                     <form>
                                         <div class="mb-3">
@@ -74,6 +74,7 @@
 <script>
 import AddComp from '@/components/AddPostComp.vue'
 import EditComp from '@/components/EditPostComp.vue'
+import axios from 'axios';
 export default {
     data(){
         return{
@@ -112,8 +113,14 @@ export default {
         },
         navigateToPost(postID) {
             this.$router.push({name:'post', params:{id:postID}});
+        },
+        async fetchPostById(id){
+            let {data} = await axios.get(`http://localhost:2107/posts/${id}`)
+            console.log(data) 
+            this.content = data.content
+            this.post_id= data.post_id
+            this.url = data.url
         }
-
     },
     mounted(){
         this.getPosts()

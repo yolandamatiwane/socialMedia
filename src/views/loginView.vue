@@ -69,8 +69,8 @@ export default {
     background-position: center; 
     background-repeat: no-repeat;
     padding: 20px;
-    min-height:60vh;
-    margin:100px 150px ;
+    /* min-height:100vh; */
+    margin: 125px 100px ;
     font-weight: 600;
     color: #36454F;
     border-radius: 10px;
@@ -126,25 +126,19 @@ span,h5{
     }
 }
 @media(max-width:750px){
-
+    form{
+        /* width: 100%; */
+        /* margin: 25px 50px !important; */
+        margin: auto;
+        justify-content: center;
+        align-self: center;
+    }
 }
-@media (max-width: 350px) {
-  .container {
-    padding: 5px; /* Further reduce padding on very small screens */
-    margin:0px;
-  }
-  .col-12 img {
-    width: 100%;
-  }
-
-  .btn-custom, #custom {
-    font-size: 14px;
-  }
-  form{
-    width:100%;
-    margin: 0px !important;
-
-  }
+@media(max-width: 350px){
+    form{
+        margin: 0px !important;
+        width: 100%;
+    }
 }
 
 </style>

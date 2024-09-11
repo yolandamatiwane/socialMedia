@@ -25,7 +25,7 @@
                         <td><img :src="post.url" id="postURL"></td>
                         <td><button class="btn btn-dark" @click.prevent="removePost(post.post_id)"><i class="bi bi-trash3-fill"></i></button></td>
                         <td>
-                            <edit-comp>
+                            <edit-comp :id="post.post_id" :fetchPostById="fetchPostById" >
                                 <template #updatePost>
                                     <form>
                                         <div class="mb-3">
@@ -58,6 +58,8 @@
 </template>
 <script>
 import EditComp from '@/components/EditPostComp.vue'
+import axios from 'axios';
+
 export default {
     data(){
         return{
@@ -94,6 +96,14 @@ export default {
         })
         this.selectedPosts = []
         this.getPosts()
+    },        
+    async fetchPostById(id){
+        let {data} = await axios.get(`http://localhost:2107/posts/${id}`)
+        console.log(data) 
+        this.content = data.content
+        this.post_id= data.post_id
+        this.url = data.url
+        this.user_id = data.user_id
     }
   },
   mounted() {
