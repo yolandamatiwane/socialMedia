@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid text-center">
+    <div class="container text-center">
         <div class="row">
             <div class="col-12 col-sm-6">
                 <h1>Good {{ timeOfDay }}</h1>
@@ -60,16 +60,17 @@ export default {
     
 }
 </script>
-<style scope>
-.container-fluid {
+<style scoped>
+.container {
+    /* align-items:center;
+    justify-content:center; */
     background-image: url('https://yolandamatiwane.github.io/socialMediaImg/ProjectSignUp.jpg');
     background-size: cover; 
     background-position: center; 
-    
     background-repeat: no-repeat;
-    min-height:82vh;
-    padding: 20px; 
-    margin:55px ;
+    padding: 20px;
+    min-height:60vh;
+    margin:100px 150px ;
     font-weight: 600;
     color: #36454F;
     border-radius: 10px;
@@ -112,4 +113,38 @@ form .form-control{
 span,h5{
     font-weight: 800;
 }
+/* Media Queries */
+@media(max-width:1100px){
+    .container{
+        margin: 0px;
+        min-height: 100vh;
+        min-width: 100vw;
+    }
+    form{
+        width: 60%;
+        margin: 50px 100px !important;
+    }
+}
+@media(max-width:750px){
+
+}
+@media (max-width: 350px) {
+  .container {
+    padding: 5px; /* Further reduce padding on very small screens */
+    margin:0px;
+  }
+  .col-12 img {
+    width: 100%;
+  }
+
+  .btn-custom, #custom {
+    font-size: 14px;
+  }
+  form{
+    width:100%;
+    margin: 0px !important;
+
+  }
+}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid text-center">
+    <div class="container text-center">
         <div class="row">
         <div class="col-12 col-sm-6">
             <form>
@@ -112,14 +112,14 @@ export default {
 }
 </script>
 <style scoped>
-.container-fluid {
+.container {
     background-image: url('https://yolandamatiwane.github.io/socialMediaImg/ProjectLogIn.jpg');
-    background-size: cover; /* Ensure the image covers the entire container */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    min-height:80vh; /* Make sure the container covers at least the full viewport height */
-    padding: 20px; /* Optional: Add some padding if needed */
-    margin:40px ;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    min-height:80vh;
+    padding: 20px; 
+    margin:50px 100px ;
     font-weight: 600;
     color: #36454F;
     border-radius: 10px;
@@ -177,5 +177,50 @@ form{
 }
 span,h5{
     font-weight: 800;
+}
+/* Media Queries */
+@media(max-width:1100px){
+    .container{
+        margin: 0px;
+        min-height: 100vh;
+        min-width: 100vw;
+    }
+    form{
+        width: 80%;
+        margin: auto 0px !important;
+    }
+}
+@media(max-width:750px){
+    #name{
+        display:flex;
+        flex-direction:column;
+    }
+    form{
+        margin: auto 0px;
+    }
+}
+@media(max-width:578px){
+    .container{
+        display:flex;
+        flex-direction:column-reverse !important;
+    }
+}
+@media (max-width: 350px) {
+  .container {
+    padding: 5px;
+    margin:0px;
+  }
+  .col-12 img {
+    width: 100%;
+  }
+
+  .btn-custom, #custom {
+    font-size: 14px;
+  }
+  form{
+    width:100% !important;
+    margin: 0px !important;
+
+  }
 }
 </style>

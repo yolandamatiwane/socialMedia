@@ -48,7 +48,8 @@ import NavComp from '@/components/NavComp.vue';
 }
 #main-content.no-margin {
   min-height: 100vh;
-  margin-left: 0px;
+  /* width: 100vw; */
+  margin: 0px;
   background-color: white;
 }
 </style>

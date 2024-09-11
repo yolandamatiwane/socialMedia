@@ -10,6 +10,8 @@
                     <th scope="col">UserID</th>
                     <th scope="col">Content</th>
                     <th scope="col">Url</th>
+                    <th scope="col" colspan="2">Actions</th>
+                    
                     </tr>
                 </thead>
                 <tbody>
@@ -80,15 +82,18 @@ export default {
     },
     editPost(){
         this.$store.dispatch('updatePost',this.$data)
+        this.getPosts()
     },
     removePost(id){
         this.$store.dispatch('deletePost',id)
+        this.getPosts()
     },
     deleteSelected(){
         this.selectedPosts.forEach(postId => {
             this.$store.dispatch('deletePost',postId)
         })
         this.selectedPosts = []
+        this.getPosts()
     }
   },
   mounted() {
