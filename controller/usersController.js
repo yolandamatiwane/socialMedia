@@ -16,9 +16,7 @@ const fetchUsers = async(req,res)=>{
 const fetchUser = async (req,res)=>{
     try {
         let user = await getUserDb(req.params.id)
-        if(!user){
-            return res.status(404).json({err:"user not found!"})
-        }
+        console.log(user);
         res.status(200).json(user)
     } catch (err) {
         console.log(err);
@@ -28,6 +26,8 @@ const fetchUser = async (req,res)=>{
 const fetchUserReq = async (req,res)=>{
     try {
         let user = await logInDb(req.user)
+        console.log(user);
+        
         if(!user){
             return res.status(401).json({err:"user not authenticated"})
         }

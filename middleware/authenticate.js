@@ -14,7 +14,7 @@ const checkUser = async (req,res,next)=>{
         let user = await logInDb(email)
         // console.log(user)
         if(!user){
-           return res.status(400).json({message:"invalid email"})
+           return res.status(400).json({err:"invalid email"})
         }
 
         let hashedPassword = user.password
@@ -40,15 +40,15 @@ const checkUser = async (req,res,next)=>{
 
 const verifyAToken = (req,res,next)=>{
     let {cookie} = req.headers
-    console.log('hehe');
+    // console.log('hehe');
     
     // checks if token exists first
     let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
     let secToken = token?.split(';')[0]
     // console.log(token);
     // console.log(secToken)
-    // if(!token){
-    //     return res.status(401).json({message:"Unauthorized"})
+    // if(secToken){
+    //     return res.status(401).json({err:"Unauthorized"})
     // }
     jwt.verify(secToken,process.env.SECRET_KEY,(err,decoded)=>{
         if(err){

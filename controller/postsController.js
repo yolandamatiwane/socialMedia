@@ -13,7 +13,7 @@ const fetchPosts = async (req,res)=>{
 
 const fetchSinglePost = async(req,res)=>{
     try {
-        post = await getSinglePostDb(req.params.id)
+        let post = await getSinglePostDb(req.params.id)
         if(!post){
             return res.status(404).json({err:"Post not found"})
         }
