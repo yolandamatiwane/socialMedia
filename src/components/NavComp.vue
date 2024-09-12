@@ -42,7 +42,7 @@
           </h4>
         </router-link>
       </div>
-        <button @click="logOut()" class="btn btn-dark"><i class="bi bi-box-arrow-right"></i> LogOut</button>
+        <button @click="logOut()" class="btn btn-dark"><i class="bi bi-box-arrow-right"></i> <label>LogOut</label></button>
       </div>
   </nav>
 </template>
@@ -139,8 +139,8 @@ nav a.router-link-exact-active {
 } */
 @media (max-width: 600px) {
   nav {
-    width: 100%;
-    height: auto;
+    width: 100vw;
+    height: 60px;
     position: fixed;
     top: auto;
     bottom: 0;
@@ -155,16 +155,22 @@ nav a.router-link-exact-active {
   nav div {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; 
+    label{
+      display:none;
+    }
   }
 
   nav a {
     font-size: 14px; 
     padding: 10px; 
+    label{
+      display:none;
+    }
   }
 
   .navLogo {
-    height: auto;
+    display: none;
+    font-size: smaller;
     margin-bottom: 10px;
   }
 }

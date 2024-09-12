@@ -2,7 +2,7 @@
   <div class="mainHome">
     <div class="container-fluid text-center">
       <div class="row">
-        <div class="col-7" id="main">
+        <div class="col-12 col-sm-7 order-2 order-sm-1" id="main">
           <div class="flex">
             <div id="homeUserDets" v-for="user in users" :key="user.user_id">
             <img :src="user.profile" id="userPic">
@@ -42,7 +42,7 @@
             </div>
           </div>
         </div>
-        <div class="col" id="Resources">
+        <div class="col-12 col-sm-5 order-1 order-sm-2" id="Resources">
           <div class="input-group mb-3">
           <button class="btn btn-custom"><i class="bi bi-search"></i></button>
           <input type="text" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="basic-addon1" v-model="searchTerm">
@@ -214,5 +214,13 @@ h6{
 
 .search-result div {
   color: white;
+}
+@media(max-width:600px){
+  col-12{
+    width: 100vw;
+  }
+  #Resources{
+    border-left:0px !important;
+  }
 }
 </style>
