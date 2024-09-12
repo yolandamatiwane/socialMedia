@@ -1,7 +1,7 @@
 <template>
     <div class="container text-center">
         <div class="row">
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-6 order-2 order-sm-1">
             <form>
                 <h5>SignUp</h5>
                 <div id="name">
@@ -57,7 +57,7 @@
                 <button @click.prevent="addUser()" class="btn btn-custom">Register</button>
             </form>
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-6 order-1 order-sm-2">
             <h2>Good {{ timeOfDay }}</h2>
             <h4>Welcome to <span>COMFORT CORNER</span></h4>
             <p>Already have an account?</p>
@@ -186,6 +186,13 @@ span,h5{
         min-height: 100vh;
         min-width: 100vw;
     }
+    .mb-3{
+        width: 100%;
+    }
+    #name{
+        justify-content: center;
+        align-items: center;
+    }
     form{
         width: 80%;
         margin: auto 0px !important;
@@ -207,14 +214,19 @@ span,h5{
         margin: 0px;
         width: 100%;
     }
+    imput{
+        width:100%;
+    }
     #name{
       width: 100%;
       gap: 15px;
     }
     .mb-3 {
       margin-left: 0; /* Remove left margin */
+      width:100%;
     }
     
+
     .form-control {
       width: 100%; /* Ensure form controls take full width */
     }
@@ -234,9 +246,6 @@ span,h5{
   .btn-custom, #custom {
     font-size: 14px;
   }
-  form{
-        margin: 0px !important;
-        width: 100%;
-    }
+
 }
 </style>

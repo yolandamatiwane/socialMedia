@@ -134,9 +134,16 @@ span,h5{
         align-self: center;
     }
 }
-@media(max-width: 350px){
+@media(max-width:430px){
     form{
         margin: 0px !important;
+        width:100%;
+    }
+}
+
+@media(max-width: 350px){
+    form{
+
         width: 100%;
     }
 }
