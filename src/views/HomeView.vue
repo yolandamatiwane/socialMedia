@@ -28,10 +28,10 @@
               </div>
               <div class="card-footer">
                 <div>
-                  <i class="bi bi-heart-fill"></i> Like
+                  <i class="bi bi-heart-fill"></i> <label>Like</label>
                   <button @click="navigateToPost(post.post_id)" class="btn">
                     <i class="bi bi-chat-dots-fill"></i>
-                    comments
+                    <label>comments</label>
                   </button>
                   <i class="bi bi-send-fill"></i>
                 </div>
@@ -206,6 +206,7 @@ h6{
   border-bottom: #a4d4a1;
 }
 
+
 .search-result img {
   width: 40px;
   border-radius: 50%;
@@ -216,8 +217,12 @@ h6{
   color: white;
 }
 @media(max-width:600px){
-  col-12{
-    width: 100vw;
+  
+  .container-fluid{
+    font-size: small;
+  }
+  footer{
+    display: none;
   }
   #Resources{
     border-left:0px !important;

@@ -115,8 +115,42 @@ export default {
     #postURL{
         width: 18%;
     }
-    #table{
-        margin: auto 100px;
+    .table{
+        width: 80%;
+
     }
+    #table{
+        margin-left: 70px;
+    }
+    
+    @media (max-width:600px){
+        #table{
+            margin: 0px !important;
+        }
+    }
+    @media(max-width:555px) {
+    table {
+        font-size: 12px;
+        margin: auto;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    th, td {
+        padding: 10px; 
+        display: block;
+        width: 100%;
+        box-sizing: border-box; 
+    }
+
+    tr {
+        border-bottom: 1px solid #ddd; 
+    }
+
+    th {
+        background-color: #F0F0F0;
+        border-bottom: 2px solid #ccc;
+    }
+}
     
 </style>

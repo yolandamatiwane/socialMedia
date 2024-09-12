@@ -149,7 +149,7 @@ import axios from 'axios';
             },        
             async fetchUserById(id){
                 console.log(id)
-                let {data} = await axios.get(`http://localhost:2107/users/${id}`)
+                let {data} = await axios.get(`http://localhost:2107/users/user/${id}`)
                 console.log(data.firstName) 
                 this.firstName = data.firstName
                 this.lastName = data.lastName
@@ -207,8 +207,6 @@ import axios from 'axios';
     #backgroundImg{
         width: 100%;
         height: 200px;
-        margin-left: 12px;
-        /* margin-left: 20px; */
 
     }
     .btn-outline-custom{
@@ -220,23 +218,13 @@ import axios from 'axios';
     .cards-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        /* justify-content: flex-start; */
         gap: 1rem;
-        margin: 1rem 50px;
+        margin: 1rem;
     }
     .form-control{
         border: 2px solid #36454F;
         color: #36454F;
-    }
-    .card {
-        flex: 1 1 calc(33.333% - 2rem);
-        box-sizing: border-box;
-        max-width: calc(33.333% - 2rem);
-        height: 250px;
-        background-color: white;
-        color: rgb(4, 37, 19);
-        border: 3px solid rgb(21, 53, 31);
-        margin: auto;
     }
     #postedImg{
         height: 200px;
@@ -264,4 +252,18 @@ import axios from 'axios';
     #footer{
         margin-top:280px;
     }
+    @media (max-width: 767px) {
+        #profileP {
+            width: 100%;
+            top: -3rem;
+        }
+
+        .btn-custom {
+            margin-top: 10px;
+        }
+        
+        .cards-container {
+            margin: 1rem 0;
+        }
+  }
 </style>

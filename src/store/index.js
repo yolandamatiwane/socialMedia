@@ -53,7 +53,8 @@ export default createStore({
         toast.success(data.message)
 
       } catch(err){
-        toast.error(err.response?.data?.err)
+        console.log(err)
+        toast.error(err.response.data.err)
       }
     },
     async loginUser({commit},info){
@@ -69,7 +70,7 @@ export default createStore({
         toast.success(data.message)
 
       }catch(err){
-        toast.error(err.response?.data?.err)
+        toast.error(err.response.data.err)
       }
     },
     // fetching user using login 
@@ -84,7 +85,7 @@ export default createStore({
         }
       }catch(err){
         console.log(err)
-        toast.error(err.response?.data?.err)
+        toast.error(err.response.data.err)
       }
     },
     // fetching user by id 

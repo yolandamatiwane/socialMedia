@@ -37,10 +37,10 @@
 
             <div class="card-footer">
                 <div>
-                  <i class="bi bi-heart-fill"></i> Like
+                  <i class="bi bi-heart-fill"></i> <label>Like</label>
                   <button @click="navigateToPost(post.post_id)" class="btn">
                     <i class="bi bi-chat-dots-fill"></i>
-                    comments
+                    <label>comments</label>
                   </button>
                   <i class="bi bi-send-fill"></i>
                 </div>
@@ -193,6 +193,26 @@ export default {
     #AddingPost{
         margin: 10px 120px 50px;
     }
-
+    /* @media(max-width:900px){
+        #mainCard{
+            margin-left:200px !important;
+        }
+    } */
+    @media(max-width:600px){
+        #mainCard{
+            margin: auto;
+        }
+        #AddingPost{
+            margin: auto;
+        }
+        .card{
+            margin-bottom: 10px;
+            /* margin: auto; */
+            width: 90%;
+        }
+        label{
+            display: none;
+        }
+    }
 
 </style>

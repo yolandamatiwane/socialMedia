@@ -214,7 +214,7 @@ span,h5{
         margin: 0px;
         width: 100%;
     }
-    imput{
+    input{
         width:100%;
     }
     #name{
@@ -233,6 +233,7 @@ span,h5{
 
     .container {
       margin: 0;
+      width: 100vw;
     }
 
 }
@@ -240,8 +241,9 @@ span,h5{
 @media (max-width: 350px) {
     
   .container {
-    margin:0px;
-    width: 100vw;
+    /* margin: 0%; */
+    width: 80vw;
+    /* padding: 0%; */
   }
   .btn-custom, #custom {
     font-size: 14px;

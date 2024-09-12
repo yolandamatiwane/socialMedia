@@ -108,39 +108,21 @@ nav a.router-link-exact-active {
 }
 
 /* mobile */
-/* @media (max-width: 1100px){
-  nav {
-    width: 100%;
+@media (max-width: 900px){
+
+  .navLogo{
     height: auto;
-    position: fixed;
-    top: auto;
-    padding: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    box-shadow: none;
+    /* font-size: smaller; */
+    margin: auto;
   }
-
-  nav div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; 
+  h2{
+    font-size: smaller;
   }
-
-  nav a {
-    font-size: 14px; 
-    padding: 10px; 
-  }
-
-  .navLogo {
-    height: auto;
-    margin-bottom: 10px;
-  }
-} */
+}
 @media (max-width: 600px) {
   nav {
     width: 100vw;
-    height: 60px;
+    height: 80px;
     position: fixed;
     top: auto;
     bottom: 0;
@@ -150,29 +132,41 @@ nav a.router-link-exact-active {
     flex-direction: row;
     justify-content: space-around;
     box-shadow: none;
+
   }
 
   nav div {
     display: flex;
     flex-direction: row;
-    label{
-      display:none;
-    }
   }
 
   nav a {
     font-size: 14px; 
     padding: 10px; 
-    label{
-      display:none;
-    }
+    /* margin-bottom: 0px; */
   }
 
   .navLogo {
     display: none;
-    font-size: smaller;
-    margin-bottom: 10px;
+    /* font-size: smaller;
+    margin-bottom: 15px; */
   }
+  h4, .btn{
+    display: flex;
+    flex-direction: column;
+    font-size:18px;
+    /* margin-bottom: 50px; */
+  }
+  .btn{
+    background-color: #A4D4A1;
+    border: none;
+  }
+}
+@media (max-width:430px){
+  label{
+    display: none;
+  }
+
 }
 
 </style>

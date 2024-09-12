@@ -1,91 +1,75 @@
 <template>
   <div class="about">
-    <!-- <h4>ABOUT US:</h4> -->
-    <div class="card">
-      <div class="card-header">
-        <h5>About Us</h5>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-header text-white">
+            <h2 class="mb-0">About Us</h2>
+          </div>
+          <div class="card-body">
+            <h3>Welcome to Comfort Corner</h3>
+            <p>
+              At Comfort Corner, we understand that navigating the emotional landscape of lost love can be a profoundly isolating experience. Our mission is to provide a safe, supportive digital space where you can openly express your feelings, share your personal journey, and find comfort in knowing you're not alone.
+            </p>
+            
+            <h4>What We Offer</h4>
+            <ul>
+              <li><strong>Express Yourself:</strong> Whether through heartfelt text or poignant images, Comfort Corner allows you to share your experiences and emotions in a space designed for understanding and empathy.</li>
+              <li><strong>Connect and Engage:</strong> Interact with others who are experiencing similar feelings. Comment on posts, like content that resonates with you, and build connections with people who understand your journey.</li>
+              <li><strong>Supportive Community:</strong> Our platform is built on the principles of compassion and support. By sharing your story, you not only help yourself but also offer solace to others who may be facing similar challenges.</li>
+              <li><strong>Safe Space:</strong> We prioritize creating a safe and respectful environment where all users can feel comfortable expressing their emotions without judgment.</li>
+            </ul>
+            
+            <h4>Our Vision</h4>
+            <p>
+              We believe that healing comes through connection, empathy, and shared experiences. Comfort Corner is more than just an app—it's a community where you can find strength, understanding, and encouragement during one of life's most difficult times.
+            </p>
+            
+            <h4>Connect with Us</h4>
+            <p>
+              Have questions, feedback, or need support? Feel free to reach out to our team at. We're here to help and listen.
+            </p>
+            
+            <h4>Join Us on This Journey</h4>
+            <p>
+              Together, we can transform the pain of lost love into a powerful source of healing and connection. Welcome to Comfort Corner, where every story matters and every voice is heard.
+            </p>
+          </div>
+          <div class="card-footer text-center">
+            <small class="text-muted">Thank you for being a part of Comfort Corner.</small>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <div id="right">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor facere laboriosam aspernatur odio fugit consectetur magnam fugiat quisquam sequi, adipisci doloribus asperiores?
-        </div>
-        <div id="left">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor facere laboriosam aspernatur odio fugit consectetur magnam fugiat quisquam sequi, adipisci doloribus asperiores? Dolores nobis tempore at numquam rerum? Dolores, aperiam.
-        </div>
-        <div id="right">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor facere laboriosam aspernatur odio fugit consectetur magnam fugiat quisquam sequi, adipisci doloribus asperiores? Dolores nobis tempore at numquam rerum? Dolores, aperiam.
-        </div>
-        <div id="left">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor facere laboriosam aspernatur odio fugit consectetur magnam fugiat quisquam sequi, adipisci doloribus asperiores? Dolores nobis tempore at numquam rerum? Dolores, aperiam.
-        </div>
-
-      </div>
-      <!-- <div class="card-body">
-        <div class="card-text">
-          <h6>OUR MISSION:</h6>
-          At Comfort Corner, we understand that grief is a deeply personal journey, and finding a safe space to share your experiences can be challenging. Our mission is to create a compassionate and supportive community where individuals can connect, share their grief stories, and find solace in knowing they are not alone.
-        </div>
-
-        <div class="card-text">
-          <h6>Why We Created This Space</h6>
-
-          In today’s digital age, many social media platforms fall short in providing a safe, empathetic environment for those experiencing grief. We recognized the need for a dedicated space where people can openly discuss their feelings without fear of judgment. Comfort Corner is designed to fill this gap, fostering mental wellness through mutual support and understanding.
-        </div>
-        <div>
-          Our Commitment to Mental Wellness
-
-          We believe that mental wellness is a journey that often requires both peer support and professional assistance. That’s why we’ve integrated resources for therapy and crisis support directly into our app. We encourage users to seek out these resources if they need additional help beyond our community’s support.
-        </div>
-        <div>
-          What We Offer
-
-          Safe Community: Share your grief stories in a respectful, understanding environment where everyone’s voice matters.
-          Supportive Connections: Connect with others who are navigating similar experiences, offering and receiving support in a meaningful way.
-          Resources: Access a curated list of therapy recommendations and hotlines for professional help and guidance.
-
-        </div>
-      </div> -->
-
     </div>
+  </div>
   </div>
 </template>
 <script>
 </script>
 <style scoped>
-  #left{
-    background-image: url('https://yolandamatiwane.github.io/socialMediaImg/CommentLeft.jpg');
-    padding: 21px;
-    background-size:contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-size: smaller;
-    height: 200px;
-    width: 400px;
-    color: white;
-  }
-  #right{
-    background-image: url('https://yolandamatiwane.github.io/socialMediaImg/ChatRight.jpg');
-    padding: 21px;
-    background-size:contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-size: smaller;
-    height: 200px;
-    width: 400px;
-    margin-left: 400px;
-  }
-  .about{
-    background-color: #36454F;
-    color: white;
-    margin: 0;
-  }
-  h4{
-    margin-top: 60px;
-  }
+.card-header, .card-body{
+  background-color: #a4d4a1;
+  color: white;
+}
+h4{
+  color: #36454F;
+}
+.card-footer{
+  background-color: #36454F;
+  color: white;
+}
+
+@media(max-width:900px){
   .card{
-    margin: 50px 270px;
-    background-color: #e0f7fa;
-    color:  #36454F;
-    font-size: larger;
+    margin-left: 130px;
+    justify-content: center;
+    align-self: center;
   }
+}
+@media(max-width:600px){
+  .card{
+    margin: 0px 0px;
+  }
+}
 </style>

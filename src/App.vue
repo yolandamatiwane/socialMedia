@@ -3,18 +3,18 @@
     <nav-comp/>
     <div id="main-content" :class="{ 'no-margin': !hasToken }">
       <router-view/>
+      <footer-comp/>
     </div>
   </div>
-  <!-- <footer-comp/> -->
 </template>
 
 <script>
 import NavComp from '@/components/NavComp.vue';
-// import FooterComp from './components/FooterComp.vue';
+import FooterComp from './components/FooterComp.vue';
   export default {
     components:{
       NavComp,
-      // FooterComp
+      FooterComp
     }, computed:{
       token(){
         return this.$cookies.get('token');
@@ -41,28 +41,24 @@ import NavComp from '@/components/NavComp.vue';
   /* background-color: #36454F; */
 }
 #main-content {
-  /* width: 100vw; */
-  height: 100vh;
+  flex: 1;
   margin-left: 300px;
   background-color: #36454F;
-
-  /* margin-top: 10px; */
 }
 #main-content.no-margin {
   min-height: 100vh;
-  /* width: 100vw; */
   margin: 0px;
   background-color: white;
 }
 @media(max-width:1300px){
   #main-content{
-    width: 100%;
+    /* width: 100%; */
     margin-left: 250px;
   }
 }
 @media (max-width: 1100px){
   #main-content {
-  width: 100%;
+  /* width: 100%; */
   margin-left: 200px;
   background-color: #36454F;
   }
@@ -77,13 +73,12 @@ import NavComp from '@/components/NavComp.vue';
     flex-direction: row-reverse;
   }
   #main-content{
-
+    margin: 0px;
   }
 }
 @media (max-width: 600px){
   #main-content {
-  width: 100%;
-  margin: 0px;
+  margin-bottom: 100px;
   background-color: #36454F;
 }
 #main-content.no-margin{
