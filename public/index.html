@@ -34,17 +34,17 @@
             <td>Returns an array of all users</td>
         </tr>
         <tr>
-            <td>'/users/:id'</td>
+            <td>'/users/user/:id'</td>
             <td>GET</td>
-            <td>Returns single user's information</td>
+            <td>Returnsan object with single user's information</td>
         </tr>
         <tr>
             <td>'users/register'</td>
             <td>POST</td>
-            <td>Registers new user</td>
+            <td>Registers/adds a new user</td>
         </tr>
         <tr>
-            <td>'users/update/:id'</td>
+            <td>'users/user/:id'</td>
             <td>PATCH</td>
             <td>Updates user's information</td>
         </tr>
@@ -54,7 +54,7 @@
             <td>Logs in existing user and sends back jwt </td>
         </tr>
         <tr>
-            <td>'users/delete/:id'</td>
+            <td>'users/user/:id'</td>
             <td>DELETE</td>
             <td>Removes user's information</td>
         </tr>
@@ -77,17 +77,17 @@
             <td>Returns single post</td>
         </tr>
         <tr>
-            <td>'posts/add'</td>
+            <td>'/posts'</td>
             <td>POST</td>
             <td>Adds new post</td>
         </tr>
         <tr>
-            <td>'posts/update/:id'</td>
+            <td>'/posts/post/:id'</td>
             <td>PATCH</td>
             <td>Updates post's information</td>
         </tr>
         <tr>
-            <td>'posts/delete/:id'</td>
+            <td>'/posts/post/:id'</td>
             <td>DELETE</td>
             <td>Removes post</td>
         </tr>
@@ -100,29 +100,34 @@
             <th>DESCRIPTION</th>
         </tr>
         <tr>
-            <td>'/comments'</td>
+            <td>'/post/:postId/comments'</td>
             <td>GET</td>
-            <td>Returns an array of all comments</td>
+            <td>Returns an array of all comments as per post id</td>
         </tr>
         <tr>
-            <td>'/comments/:id'</td>
+            <td>'/post/:postId/comment/:cID'</td>
             <td>GET</td>
-            <td>Returns single comment</td>
+            <td>Returns single comment as per post id</td>
         </tr>
         <tr>
-            <td>'comments/add'</td>
+            <td>'post/comment'</td>
             <td>POST</td>
             <td>Adds new comment</td>
         </tr>
         <tr>
-            <td>'comments/update/:id'</td>
+            <td>'/post/:postID/comment/:cID'</td>
             <td>PATCH</td>
-            <td>Updates comment </td>
+            <td>Updates comment by authorized user </td>
         </tr>
         <tr>
-            <td>'comments/delete/:id'</td>
+            <td>'/post/:postID/comment/:cID'</td>
             <td>DELETE</td>
-            <td>Removes comment</td>
+            <td>Removes comment by authorized user</td>
+        </tr>
+        <tr>
+            <td>'/post/:postID/comment'</td>
+            <td>DELETE</td>
+            <td>Removes comments from a post by authorized user</td>
         </tr>
     </table>
     
