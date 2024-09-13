@@ -64,7 +64,7 @@ const addUser = async(req,res)=>{
 
 
             if(email == oldEmail){
-            return res.status(400).json({message:"Email already exists"})
+            return res.status(400).json({err:"Email already exists"})
             }
             hash(password,12,async (err,hashedP)=>{
                 if(err){
@@ -72,10 +72,10 @@ const addUser = async(req,res)=>{
                     return res.status(500).json({err:"There was an issue with hashing the password"})
                 }
                 await addUserDb(firstName,lastName,age,username,email,hashedP,role,profile,background,gender)
-                res.status(200).json({message:"User added successfully"})
-            })
-            res.json({message:"User added successfully"})
                 }
+            )
+            res.status(200).json({message:"User added successfully"})
+        }
     } catch(err){
         console.log(err)
         res.status(500).json({err:"There was an issue with your registration"})
