@@ -40,25 +40,19 @@ const checkUser = async (req,res,next)=>{
 
 const verifyAToken = (req,res,next)=>{
     let {cookie} = req.headers
-    // console.log('hehe');
     
     // checks if token exists first
     let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
     let secToken = token?.split(';')[0]
-    // console.log(token);
-    // console.log(secToken)
-    // if(secToken){
-    //     return res.status(401).json({err:"Unauthorized"})
-    // }
     jwt.verify(secToken,process.env.SECRET_KEY,(err,decoded)=>{
         if(err){
-            res.json({err:'Token is invalid'})
+            res.json({err:'Token Has Expired, Please log in'})
             // throw err 
             return
         }
         // req.body.username = decoded.username
         req.user = decoded.email
-         console.log(req.user)
+        //  console.log(req.user)
         next()
     })
 }

@@ -6,6 +6,15 @@ table, th, td{
     font-size: 16px;
     margin: auto;
 }
+th{
+    background-color: #36454F;
+    color: white;
+}
+td{
+    background-color: #a4d4a1;
+    color: #36454F;
+    font-size: bold;
+}
 
 table{
     width: 70%;
