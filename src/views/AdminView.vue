@@ -156,27 +156,55 @@ export default {
         }
     }
     @media(max-width:555px) {
-    table {
-        font-size: 12px;
-        margin: auto;
-        border-collapse: separate;
-        border-spacing: 0;
+     #table{
+        margin-left: 0px !important;
     }
-
-    th, td {
-        padding: 10px; 
-        display: block;
-        width: 100%;
-        box-sizing: border-box; 
+    .table {
+      width: 100%;
+      border-collapse: collapse;
     }
-
-    tr {
-        border-bottom: 1px solid #ddd; 
+    .table thead {
+      display: none;
     }
-
-    th {
-        background-color: #F0F0F0;
-        border-bottom: 2px solid #ccc;
+    .table tr {
+      display: block;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+    }
+    .table td {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      border-bottom: 1px dotted #ccc;
+      padding: 10px;
+      position: relative;
+    }
+    .table td:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .table td:last-child {
+      border-bottom: 0;
+    }
+    .table td:nth-child(1):before {
+      content: "Selected";
+    }
+    .table td:nth-child(2):before {
+      content: "Post Id";
+    }
+    .table td:nth-child(3):before {
+      content: "User Id";
+    }
+    .table td:nth-child(4):before {
+      content: "Content";
+    }
+    .table td:nth-child(5):before {
+      content: "Url";
+    }
+    .table td:nth-child(7):before {
+      content: "Action";
     }
 }
     
