@@ -58,6 +58,8 @@ const checkUser = async (req,res,next)=>{
 // }
 const verifyAToken = (req,res,next)=>{
     let cookie = req.headers.authorization
+    console.log(cookie);
+    
     
     // checks if token exists first
     jwt.verify(cookie,process.env.SECRET_KEY,(err,decoded)=>{
