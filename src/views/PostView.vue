@@ -1,6 +1,6 @@
 <template>
     <div id="color">
-        <LoadingOverlay :isLoading = "isLoading"/>
+        <LoadingOverlay v-if="isLoading"/>
         <div class="card-group" id="main">
         <div v-if="post"  class="card">
             <div class="card-header">
@@ -14,6 +14,9 @@
             </div>
             <div class="card-body">
                 {{ post.content }}
+                <div v-if="post.url && post.url!==' '">
+                  <img :src="post.url" class="fit-bottom" id="bodyImg">
+                </div>
                 <!-- <img v-if="post.url" :src="post.url" alt="Post Image"> -->
             </div>
             <div class="card-footer">
@@ -199,5 +202,38 @@ export default {
     background-color: #a4d4a1;
     border: none;
     color: white;
+}
+
+@media(max-width:900px){
+    #main{
+        margin-left: 90px;
+    }
+}
+@media(max-width:780px){
+    #main{
+        margin-left: 50px ;
+    }
+}
+@media(max-width:600px){
+    #main{
+        margin-left: 0px;
+    }
+    #main .card, .commentArea .mb-3{
+        width: 90%;
+        margin:5px 25px;
+    }
+    /* .commentArea .mb-3{
+        margin:5px 25px;
+        width: 90%;
+    } */
+}
+@media(max-width:350){
+    #main{
+        margin: 0;
+    }
+    #main .card{
+        width: 100%;
+        margin:5px 5px;
+    }
 }
 </style>

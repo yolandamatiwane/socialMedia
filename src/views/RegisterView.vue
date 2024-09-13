@@ -7,51 +7,51 @@
                 <div id="name">
                     <div class="mb-3">
                         <!-- <label for="exampleInputName1" class="form-label">First Name:</label> -->
-                        <input type="text" class="form-control" v-model="firstName" placeholder="First Name..." id="exampleInputName1">
+                        <input type="text" class="form-control" required v-model="firstName" placeholder="First Name..." id="exampleInputName1">
                     </div>
                     <div class="mb-3">
                         <!-- <label for="exampleInputSurname1" class="form-label">Surname</label> -->
-                        <input type="text" class="form-control" v-model="lastName" placeholder="Surname..." id="exampleInputSurname1">
+                        <input type="text" class="form-control" required v-model="lastName" placeholder="Surname..." id="exampleInputSurname1">
                     </div>
                 </div>
                 <div id="name">
                     <div class="mb-3">
                         <!-- <label for="exampleInputAge1" class="form-label">Age</label> -->
-                        <input type="text" class="form-control" v-model="age" placeholder="Age" id="exampleInputAge1">
+                        <input type="text" class="form-control" required v-model="age" placeholder="Age" id="exampleInputAge1">
                     </div>
                     <div class="mb-3">
                         <!-- <label for="exampleInputUsername1" class="form-label">Username</label> -->
-                        <input type="text" class="form-control" v-model="username" placeholder="Username" id="exampleInputUsername1">
+                        <input type="text" class="form-control" required v-model="username" placeholder="Username" id="exampleInputUsername1">
                     </div>
                 </div>
                 <div id="name" >
                     <div class="mb-3">
                         <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
-                        <input type="email" class="form-control" v-model="email" placeholder="email@gmail.com" id="exampleInputEmail1">
+                        <input type="email" class="form-control" required v-model="email" placeholder="email@gmail.com" id="exampleInputEmail1">
                     </div>
                     <div class="mb-3">
                         <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                        <input type="password" class="form-control" v-model="password" placeholder="Enter Password" id="exampleInputPassword1">
+                        <input type="password" class="form-control" required v-model="password" placeholder="Enter Password" id="exampleInputPassword1">
                     </div>
                 </div>
                 <div id="name" >
                     <div class="mb-3">
                         <!-- <label for="exampleInputRole1" class="form-label">Role</label> -->
-                        <input type="role" class="form-control" v-model="role" placeholder="role" id="exampleInputRole1">
+                        <input type="role" class="form-control" required v-model="role" placeholder="role" id="exampleInputRole1">
                     </div>
                     <div class="mb-3">
                         <!-- <label for="exampleInputProfile1" class="form-label">Profile Url</label> -->
-                        <input type="profile" class="form-control" v-model="profile" placeholder="profile url" id="exampleInputProfile1">
+                        <input type="profile" class="form-control" required v-model="profile" placeholder="profile url" id="exampleInputProfile1">
                     </div>
                 </div>
                 <div id="name" >
                     <div class="mb-3">
                         <!-- <label for="exampleInputBackground1" class="form-label">Background Url</label> -->
-                        <input type="background" class="form-control" v-model="background" placeholder="Background url" id="exampleInputBackground1">
+                        <input type="background" class="form-control" required v-model="background" placeholder="Background url" id="exampleInputBackground1">
                     </div>
                     <div class="mb-3">
                         <!-- <label for="exampleInputGender1" class="form-label">Gender</label> -->
-                        <input type="gender" class="form-control" v-model="gender" placeholder="Gender" id="exampleInputPassword1">
+                        <input type="gender" class="form-control" required v-model="gender" placeholder="Gender" id="exampleInputGender1">
                     </div>
                 </div>
                 <button @click.prevent="addUser()" class="btn btn-custom">Register</button>

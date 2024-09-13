@@ -26,10 +26,6 @@
               We believe that healing comes through connection, empathy, and shared experiences. Comfort Corner is more than just an app—it's a community where you can find strength, understanding, and encouragement during one of life's most difficult times.
             </p>
             
-            <h4>Connect with Us</h4>
-            <p>
-              Have questions, feedback, or need support? Feel free to reach out to our team at. We're here to help and listen.
-            </p>
             
             <h4>Join Us on This Journey</h4>
             <p>
@@ -48,16 +44,13 @@
 <script>
 </script>
 <style scoped>
-.card-header, .card-body{
+.card-header, .card-body, .card-footer{
   background-color: #a4d4a1;
   color: white;
+  font-weight: 600;
 }
-h4{
+h4,h3{
   color: #36454F;
-}
-.card-footer{
-  background-color: #36454F;
-  color: white;
 }
 
 @media(max-width:900px){

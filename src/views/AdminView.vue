@@ -1,17 +1,18 @@
 <template>
     <div id="table">
-        <h5>Posts Table</h5>
-        <div class="table-responsive-sm">
-            <LoadingOverlay :isLoading = "isLoading"/>
-            <table class="table table-striped-custom">
+        <h5>Posts Table:</h5>
+        
+        <spinner-comp v-if="isLoading"/>
+        <div v-else class="table-responsive-sm">
+            <table class="table table-striped-custom" id="stylingT">
                 <thead>
                     <tr>
                         <th>selected</th>
-                    <th scope="col">PostID</th>
-                    <th scope="col">UserID</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">Url</th>
-                    <th scope="col" colspan="2">Actions</th>
+                        <th scope="col">PostID</th>
+                        <th scope="col">UserID</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Url</th>
+                        <th scope="col" colspan="2">Actions</th>
                     
                     </tr>
                 </thead>
@@ -52,17 +53,14 @@
                         </td>
                     </tr>
                 </tbody>
-                <tfooter>
-                    <button colspan="3" class="btn btn-dark" @click.prevent="deleteSelected">Delete Selected Users</button>
-                </tfooter>
-
+                <button class="btn btn-dark" @click.prevent="deleteSelected"><i class="bi bi-trash3-fill"></i> Selected Users</button>
             </table>
         </div>
     </div>
 </template>
 <script>
 import EditComp from '@/components/EditPostComp.vue'
-import LoadingOverlay from '@/components/SpinnerComp.vue'
+import SpinnerComp from '@/components/SpinnerComp.vue'
 import axios from 'axios';
 
 export default {
@@ -78,7 +76,7 @@ export default {
     },
     components:{
         EditComp,
-        LoadingOverlay
+        SpinnerComp
     },
     computed:{
         posts(){
@@ -86,11 +84,12 @@ export default {
         }
     },
   methods:{
-    getPosts(){
-        try{
-            this.$store.dispatch('fetchPosts')
-        } finally{
-            this.isLoading = false
+    async getPosts() {
+        this.isLoading = true;
+        try {
+        await this.$store.dispatch('fetchPosts');
+        } finally {
+        this.isLoading = false;
         }
     },
     editPost(){
@@ -109,7 +108,7 @@ export default {
         this.getPosts()
     },        
     async fetchPostById(id){
-        let {data} = await axios.get(`http://localhost:2107/posts/${id}`)
+        let {data} = await axios.get(`https://socialmedia-3kos.onrender.com/posts/${id}`)
         console.log(data) 
         this.content = data.content
         this.post_id= data.post_id
@@ -123,17 +122,19 @@ export default {
 }
 </script>
 <style scoped>
-    .table-striped-custom tbody tr:nth-of-type(odd) {
-    background-color: #a4d4a1 !important;
+    #stylingT button{
+        width: 100%;
     }
-    .table-striped-custom tbody tr:nth-of-type(even) {
-    background-color: #ffffff !important;
+    #stylingT th,td{
+        background-color: #a4d4a1;
+        font-size: bold;
+        color: #36454F;
     }
     h5{
         color:white;
     }
     #postURL{
-        width: 18%;
+        width: 40%;
     }
     .table{
         width: 80%;
@@ -141,10 +142,16 @@ export default {
     }
     #table{
         margin-left: 70px;
+        min-height: 100vh
+        
     }
-    
+    @media(max-width:900px){
+        .table{
+            margin-left: 100px;
+        }
+    }
     @media (max-width:600px){
-        #table{
+        .table{
             margin: 0px !important;
         }
     }

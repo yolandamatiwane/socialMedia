@@ -1,8 +1,9 @@
 <template>
     <footer>
-    <p>
-        ComfortCorner &copy; {{ displayYear }}
-    </p> 
+    <h6>
+      ComfortCorner &copy; {{ displayYear }}
+    </h6> 
+    <h6>follow us on <i class="bi bi-facebook" ></i></h6>
     </footer>
         
 </template>

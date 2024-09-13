@@ -1,8 +1,8 @@
 <template>
   <div class="mainHome">
-    <LoadingOverlay :isLoading = "isLoading"/>
-
+    
     <div class="container-fluid text-center">
+      <LoadingOverlay v-if="isLoading"/>
       <div class="row">
         <div class="col-12 col-sm-7 order-2 order-sm-1" id="main">
           <div class="flex">
@@ -31,7 +31,7 @@
               <div class="card-footer">
                 <div>
                   <i class="bi bi-heart-fill"></i> <label>Like</label>
-                  <button @click="navigateToPost(post.post_id)" class="btn">
+                  <button class="btn">
                     <i class="bi bi-chat-dots-fill"></i>
                     <label>comments</label>
                   </button>
@@ -63,18 +63,31 @@
           <div>
             <h4>Recommendations:</h4>
             <h6>Dealing with grief can be quite overwhelming, below we have some suggestions outside of this app that could possibly assist you further.</h6>
-            <div class="card">
+            <div class="card" id="Recc">
               <h6 id="h">Counseling Services:</h6>
-              
+              <ul><li><a href="samaritans.org.za" target="_blank">Samaritans South Africa:</a> </li></ul>
+              <ul><li>Phone : 116</li></ul>
 
             </div>
-            <div class="card">
+            <div class="card" id="Recc">
               <h6 id="h">Support Hotlines:</h6>
+              <ul>
+                <li>
+                  <a href=" lifeline.org.za">Lifeline South Africa</a>
+                </li>
+                <li>Phone: 0861 322 322</li>
+                <li>
+
+                </li>
+              </ul>
 
 
             </div>
-            <div class="card">
+            <div class="card" id="Recc">
               <h6 id="h">Books and Media:</h6>
+              <ul>
+                <li><a href="https://www.samentalhealthreview.com/"> The South African Mental Health Review</a> – Offers articles and updates on mental health topics.</li>
+              </ul>
 
 
             </div>
@@ -146,6 +159,16 @@ export default {
 }
 </script>
 <style scoped>
+#Recc{
+  background-color: #a4d4a1;
+}
+#Recc h6{
+  color: white;
+  font-size: bold;
+}
+#Recc a{
+  color: #36454F;
+}
 .mainHome{
   background-color: #36454F;
 }

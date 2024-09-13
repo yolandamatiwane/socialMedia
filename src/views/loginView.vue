@@ -17,11 +17,11 @@
                     <h5>Sign into your account:</h5>
                     <div class="mb-3">
                         <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
-                        <input type="email" class="form-control" v-model="email" placeholder="email@gmail.com" id="exampleInputEmail1">
+                        <input type="email" class="form-control" required v-model="email" placeholder="email@gmail.com" id="exampleInputEmail1">
                     </div>
                     <div class="mb-3">
                         <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                        <input type="password" class="form-control" v-model="password" placeholder="enter password" id="exampleInputPassword1">
+                        <input type="password" class="form-control" required v-model="password" placeholder="enter password" id="exampleInputPassword1">
                     </div>
                     <button @click.prevent="login()" class="btn btn-custom">LogIn</button>
                 </form>

@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <LoadingOverlay :isLoading="isLoading"/>
+        <LoadingOverlay v-if="isLoading"/>
         <div class="card" v-for="post in posts" :key="post.post_id">
             <div class="card-header">
                 <div>
@@ -33,6 +33,9 @@
               </div>
             <div class="card-body">
                 {{ post.content }}
+                <div v-if="post.url && post.url!==' '">
+                  <img :src="post.url" class="fit-bottom" id="bodyImg">
+                </div>
                 <!-- <img :src="post.url" class="fit-bottom" id="bodyImg"> -->
             </div>
 
@@ -109,11 +112,11 @@ export default {
         },
         editPost(){
             this.$store.dispatch('updatePostLog',this.$data)
-            this.getPosts()
+            location.reload()
         },
         removePost(id){
             this.$store.dispatch('deletePostLog',id)
-            this.getPosts()
+            location.reload()
         },
         addPost(){
             this.$store.dispatch('addPost',{content:this.content, url:this.url})
@@ -123,7 +126,7 @@ export default {
             this.$router.push({name:'post', params:{id:postID}});
         },
         async fetchPostById(id){
-            let {data} = await axios.get(`http://localhost:2107/posts/${id}`)
+            let {data} = await axios.get(`https://socialmedia-3kos.onrender.com/posts/${id}`)
             console.log(data) 
             this.content = data.content
             this.post_id= data.post_id

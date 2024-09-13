@@ -3,10 +3,10 @@
         <div class="card" id="contactsMainDiv">
             <div class="container-fluid">
                 <div class="row">
-                    <h2>Have questions? Feel free to reach out to us!</h2>
+                    <h2>Feel free to reach out to us!</h2>
                     <div class="col-sm-6 lg-12">
                     <div class="formcarry-container">
-                        <form @submit="onSubmit">
+                        <form @submit.prevent="onSubmit" >
                         <div class="formcarry-block">
                             <label class="form-label" for="name">Full Name</label>
                             <input class="form-control" type="text" required v-model="name" id="name" placeholder="Your first and last name" />
@@ -20,11 +20,11 @@
                             <textarea class="form-control" required v-model="message" id="message" placeholder="Enter your message..."></textarea>
                         </div>
                         <div class="formcarry-block" id="buttons">
-                            <button class="btn btn-outline-dark" type="submit">
+                            <button class="btn btn-outline-light" type="submit">
                             send
                             </button>
                             
-                            <button class="btn btn-outline-dark" type="reset">Clear</button>
+                            <button class="btn btn-outline-light" type="reset">Clear</button>
                         </div>
                     
                         <div v-if="showNotification" class="formcarry-block">
@@ -39,10 +39,11 @@
                     </div>
                     </div>
                     <div class="col-sm-6 lg-12" id="dets">
-                        <label>cell: </label><h6>012 345 6789</h6>
-                        <i class="bi bi-envelope-at-fill"></i><h6>comfortcorner@gmail.com</h6>
+                        <h6><label><i class="bi bi-telephone-fill"></i></label> 012 345 6789</h6>
+                        <h6><i class="bi bi-envelope-at-fill"></i> comfortcorner@gmail.com</h6>
                         <h5>socials:</h5>
-                        
+                        <h6><i class="bi bi-whatsapp"></i>  075 678 7654</h6>
+                        <h6><i class="bi bi-facebook" ></i>  https://www.facebook.com/comfortcorner</h6>
                     </div>
                 </div>
             </div>
@@ -116,12 +117,15 @@
 </script>
 
 <style scoped>
+.container-fluid{
+  background-color: rgba(255, 255, 255, 0.107);
+}
 .bi{
     color:#36454F;
 }
   #contactsMainDiv{
-    font-family: "Bangers";
     text-align: center;
+    justify-content: center;
   }
   h2{
     margin-top:70px;
@@ -134,9 +138,9 @@
     border: 5px solid #36454F;
   }
   .formcarry-container{
-    margin-top: 100px;
+    /* margin-top: 100px; */
     width:60%;
-    margin-left:200px;
+    margin-left:100px;
   }
   label{
     font-size:20px ;
@@ -145,19 +149,23 @@
     width:30%;
   }
   #dets{
-    margin-top: 100px;
+    margin-top: 50px;
   }
+  #dets i{
+    color: white;
+  }
+
+  @media(max-width:900px){
+    #contactsMainDiv{
+      margin-left: 100px;
+    }
+  }
+
     /* For small screens (max-width: 768px) */
     @media only screen and (max-width: 768px) {
     .formcarry-container {
-      width: 90%;
-      margin-left: 20px;
-    }
-    .col-sm-6 {
       width: 100%;
-    }
-    #dets {
-      margin-top: 50px;
+      margin-left: 30px;
     }
     label {
       font-size: 18px;
@@ -168,10 +176,14 @@
     button {
       width: 40%;
     }
+    
   }
 
   /* For extra small screens (max-width: 480px) */
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 600px) {
+    #contactsMainDiv{
+      margin: 0px;
+    }
     .formcarry-container {
       width: 95%;
       margin-left: 10px;
@@ -185,12 +197,17 @@
     button {
       width: 50%;
     }
+    h2{
+      margin-top:10px;
+    }
   }
  .card{
-    background-image: url('https://yolandamatiwane.github.io/socialMediaImg/contact3.jpg');
+    /* background-image: url('https://yolandamatiwane.github.io/socialMediaImg/contact3.jpg');
     background-size:contain;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    color: #a4d4a1;
+    background-color: #36454F;
     height: 100vh;
  }
  #exampleFormControlInput1, #exampleFormControlTextarea1{

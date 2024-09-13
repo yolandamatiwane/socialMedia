@@ -1,4 +1,7 @@
 <template>
+    <div v-if="isLoading">
+        <spinner-comp/>
+    </div>
     <div class="container-fluid text-center" v-for="detail in user" :key="detail.user_id">
         <div id="top-half">
             <div id="back">
@@ -7,7 +10,6 @@
             <div  id="profileP" class="m-auto">
                 <img class="img-fluid" :src="detail.profile" id="profile-image"/>
                 <h3 class="userName">{{ detail.firstName }} {{ detail.lastName }}</h3>
-                <p>You can't see me!</p>
                 {{ detail.username }} <br>
                 Contact me at {{ detail.email }}
             </div>
@@ -95,7 +97,9 @@
                 </div>
                 <div class="card-body">
                     {{ content.content }}
-
+                    <div v-if="post.url && post.url!==' '">
+                  <img :src="post.url" class="fit-bottom" id="bodyImg">
+                </div>
                     <!-- <img v-if="content.url!=null" :src="content.url" class="card-img-bottom" id="postedImg"> -->
                 </div>
                 <div class="card-footer">
@@ -119,6 +123,7 @@
 <script>
 import ModalComp from '@/components/EditpComp.vue';
 import ViewComp from '@/components/ViewMore.vue';
+import SpinnerComp from '@/components/SpinnerComp.vue';
 import axios from 'axios';
     export default{
         data(){
@@ -138,7 +143,8 @@ import axios from 'axios';
         },
         components:{
             ModalComp,
-            ViewComp
+            ViewComp,
+            SpinnerComp
         },
         computed:{
             user(){
@@ -167,14 +173,14 @@ import axios from 'axios';
             },        
             async fetchUserById(id){
                 console.log(id)
-                let {data} = await axios.get(`http://localhost:2107/users/user/${id}`)
+                let {data} = await axios.get(`https://socialmedia-3kos.onrender.com/users/user/${id}`)
                 console.log(data.firstName) 
                 this.firstName = data.firstName
                 this.lastName = data.lastName
                 this.age = data.age
                 this.username = data.username
                 this.email = data.email
-                this.password = data.password
+                // this.password = data.password
                 this.role = data.role
                 this.profile = data.profile
                 this.background = data.background
@@ -288,7 +294,21 @@ import axios from 'axios';
     #footer{
         margin-top:280px;
     }
-    @media (max-width: 767px) {
+    @media(max-width:900px){
+        #top-half{
+            margin-left: 180px;
+        }
+        .cards-container{
+            margin-left: 180px;
+        }
+        /* .card{
+            margin-left: 100px;
+        } */
+    }
+    @media (max-width: 600px) {
+        #top-half{
+            margin-left: 0px !important;
+        }
         #profileP {
             width: 100%;
             top: -3rem;
@@ -301,5 +321,9 @@ import axios from 'axios';
         .cards-container {
             margin: 1rem 0;
         }
+        .card{
+            margin-left:10px;
+        }
+        .btn{}
   }
 </style>
