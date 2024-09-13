@@ -38,21 +38,35 @@ const checkUser = async (req,res,next)=>{
     }
 }
 
+// const verifyAToken = (req,res,next)=>{
+//     let {cookie} = req.headers
+    
+//     // checks if token exists first
+//     let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
+//     let secToken = token?.split(';')[0]
+//     jwt.verify(secToken,process.env.SECRET_KEY,(err,decoded)=>{
+//         if(err){
+//             res.json({err:'Token Has Expired, Please log in'})
+//             // throw err 
+//             return
+//         }
+//         // req.body.username = decoded.username
+//         req.user = decoded.email
+//         //  console.log(req.user)
+//         next()
+//     })
+// }
 const verifyAToken = (req,res,next)=>{
-    let {cookie} = req.headers
+    let cookie = req.headers.Authorization
     
     // checks if token exists first
-    let token = cookie && cookie.split("=")[1] // if there is a cookie, then we can split it
-    let secToken = token?.split(';')[0]
-    jwt.verify(secToken,process.env.SECRET_KEY,(err,decoded)=>{
+    jwt.verify(cookie,process.env.SECRET_KEY,(err,decoded)=>{
         if(err){
             res.json({err:'Token Has Expired, Please log in'})
             // throw err 
             return
         }
-        // req.body.username = decoded.username
         req.user = decoded.email
-        //  console.log(req.user)
         next()
     })
 }
