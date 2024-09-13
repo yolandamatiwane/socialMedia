@@ -14,9 +14,9 @@
             </div>
             <div class="card-body">
                 {{ post.content }}
-                <div v-if="post.url && post.url!==' '">
+                <!-- <div v-if="post.url && post.url!==' '">
                   <img :src="post.url" class="fit-bottom" id="bodyImg">
-                </div>
+                </div> -->
                 <!-- <img v-if="post.url" :src="post.url" alt="Post Image"> -->
             </div>
             <div class="card-footer">
