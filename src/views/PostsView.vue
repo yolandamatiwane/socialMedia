@@ -20,6 +20,7 @@
             </div>
         </div>
 
+        <LoadingOverlay :isLoading="isLoading"/>
         <div class="card" v-for="post in posts" :key="post.post_id">
             <div class="card-header">
                 <div>
@@ -37,7 +38,7 @@
 
             <div class="card-footer">
                 <div>
-                  <i class="bi bi-heart-fill"></i> <label>Like</label>
+                  <i id="like-icon" class="bi bi-heart-fill"></i> <label>Like</label>
                   <button @click="navigateToPost(post.post_id)" class="btn">
                     <i class="bi bi-chat-dots-fill"></i>
                     <label>comments</label>
@@ -74,18 +75,21 @@
 <script>
 import AddComp from '@/components/AddPostComp.vue'
 import EditComp from '@/components/EditPostComp.vue'
+import LoadingOverlay from '@/components/SpinnerComp.vue'
 import axios from 'axios';
 export default {
     data(){
         return{
             content:undefined,
             url:undefined,
-            post_id:undefined
+            post_id:undefined,
+            isLoading: true
         }
     },
     components:{
         EditComp,
-        AddComp
+        AddComp,
+        LoadingOverlay
     },
     computed:{
         posts(){
@@ -96,8 +100,12 @@ export default {
         }
     },
     methods:{
-        getPosts(){
-            this.$store.dispatch('fetchPosts')
+        async getPosts(){
+            try{
+                await this.$store.dispatch('fetchPosts')
+            } finally{
+                this.isLoading = false
+            }
         },
         editPost(){
             this.$store.dispatch('updatePostLog',this.$data)
@@ -193,14 +201,17 @@ export default {
     #AddingPost{
         margin: 10px 120px 50px;
     }
-    /* @media(max-width:900px){
-        #mainCard{
-            margin-left:200px !important;
+    @media(max-width:900px){
+        .mainCard{
+            margin-left:50px;
         }
-    } */
+        #AddingPost{
+            
+        }
+    }
     @media(max-width:600px){
-        #mainCard{
-            margin: auto;
+        .mainCard{
+            margin-left:0px;
         }
         #AddingPost{
             margin: auto;

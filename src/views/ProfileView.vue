@@ -88,11 +88,28 @@
             </div> 
         </div>
         <div class="cards-container">
+            <h6>{{ detail.firstName }}'s Posts:</h6>
             <div class="card" v-for="content in post" :key="content.post_id">
-                {{ content.created_at }}
-                <br>
-                {{ content.content }}
-                <!-- <img v-if="content.url!=null" :src="content.url" class="card-img-bottom" id="postedImg"> -->
+                <div class="card-header">
+                    <i class="bi bi-three-dots"></i>
+                </div>
+                <div class="card-body">
+                    {{ content.content }}
+
+                    <!-- <img v-if="content.url!=null" :src="content.url" class="card-img-bottom" id="postedImg"> -->
+                </div>
+                <div class="card-footer">
+                    <div class="left">
+                        <i class="bi bi-heart-fill" @click="toggleLike" :style="{ color: isLiked ? '#a4d4a1' : '' }"></i>
+                        <i class="bi bi-chat-dots-fill"></i>
+                        <i class="bi bi-send-fill"></i>
+                    </div>
+                    <div>
+                        <i id="book" class="bi bi-bookmark-fill"></i>
+                        <i class="bi bi-trash3-fill"></i>
+                    </div>
+                </div>
+                <!-- {{ content.created_at }} -->
             </div>
         </div>
  
@@ -115,7 +132,8 @@ import axios from 'axios';
                 role:undefined,
                 profile:undefined,
                 background:undefined,
-                gender:undefined
+                gender:undefined,
+                isLiked:false
             }
         },
         components:{
@@ -161,6 +179,9 @@ import axios from 'axios';
                 this.profile = data.profile
                 this.background = data.background
                 this.gender = data.gender
+            },
+            toggleLike() {
+                this.isLiked = !this.isLiked;
             }
         },
         mounted(){
@@ -171,9 +192,28 @@ import axios from 'axios';
     }
 </script>  
 <style scoped>
+    .cards-container .card-header{
+        background-color: #36454F;
+        color: white;
+    }
+    .cards-container .card-footer{
+        background-color: #36454F;
+        display: flex;
+        justify-content: space-between;
+        color: white;
+    }
+    /* .cards-container .card{
+        margin: auto;
+    } */
+    i{
+        margin: 5px;
+    }
+    .card{
+        margin-bottom: 30px;
+        border: 2px solid #a4d4a1;
+    }
     .header{
         display: flex;
-        /* justify-content: space-between; */
         height: 60px;
         border-bottom: 3px solid #36454F;
     }
@@ -216,10 +256,6 @@ import axios from 'axios';
         border: 3px solid rgb(21, 53, 31);
     }
     .cards-container {
-        display: flex;
-        flex-wrap: wrap;
-        /* justify-content: flex-start; */
-        gap: 1rem;
         margin: 1rem;
     }
     .form-control{

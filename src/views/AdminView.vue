@@ -2,7 +2,8 @@
     <div id="table">
         <h5>Posts Table</h5>
         <div class="table-responsive-sm">
-            <table class="table">
+            <LoadingOverlay :isLoading = "isLoading"/>
+            <table class="table table-striped-custom">
                 <thead>
                     <tr>
                         <th>selected</th>
@@ -51,13 +52,17 @@
                         </td>
                     </tr>
                 </tbody>
+                <tfooter>
+                    <button colspan="3" class="btn btn-dark" @click.prevent="deleteSelected">Delete Selected Users</button>
+                </tfooter>
+
             </table>
-            <button class="btn btn-dark" @click.prevent="deleteSelected">Delete Selected Users</button>
         </div>
     </div>
 </template>
 <script>
 import EditComp from '@/components/EditPostComp.vue'
+import LoadingOverlay from '@/components/SpinnerComp.vue'
 import axios from 'axios';
 
 export default {
@@ -67,11 +72,13 @@ export default {
             content:undefined,
             url:undefined,
             post_id:undefined,
-            selectedPosts:[]
+            selectedPosts:[],
+            isLoading: true 
         }
     },
     components:{
-        EditComp
+        EditComp,
+        LoadingOverlay
     },
     computed:{
         posts(){
@@ -80,7 +87,11 @@ export default {
     },
   methods:{
     getPosts(){
-      this.$store.dispatch('fetchPosts')
+        try{
+            this.$store.dispatch('fetchPosts')
+        } finally{
+            this.isLoading = false
+        }
     },
     editPost(){
         this.$store.dispatch('updatePost',this.$data)
@@ -112,6 +123,15 @@ export default {
 }
 </script>
 <style scoped>
+    .table-striped-custom tbody tr:nth-of-type(odd) {
+    background-color: #a4d4a1 !important;
+    }
+    .table-striped-custom tbody tr:nth-of-type(even) {
+    background-color: #ffffff !important;
+    }
+    h5{
+        color:white;
+    }
     #postURL{
         width: 18%;
     }

@@ -49,6 +49,9 @@ import FooterComp from './components/FooterComp.vue';
   min-height: 100vh;
   margin: 0px;
   background-color: white;
+  footer{
+    display:none;
+  }
 }
 @media(max-width:1300px){
   #main-content{
@@ -78,7 +81,7 @@ import FooterComp from './components/FooterComp.vue';
 }
 @media (max-width: 600px){
   #main-content {
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   background-color: #36454F;
 }
 #main-content.no-margin{

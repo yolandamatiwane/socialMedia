@@ -1,5 +1,6 @@
 <template>
     <div id="color">
+        <LoadingOverlay :isLoading = "isLoading"/>
         <div class="card-group" id="main">
         <div v-if="post"  class="card">
             <div class="card-header">
@@ -76,16 +77,19 @@
 </template>
 <script>
 import EditComp from '@/components/EditCommentComp.vue'
+import LoadingOverlay from '@/components/SpinnerComp.vue'
 export default {
     data(){
         return{
             post:null,
             comment_text:null,
-            comment_id:null
+            comment_id:null,
+            isLoading: true
         }
     },
     components:{
-        EditComp
+        EditComp,
+        LoadingOverlay
     },
     computed:{
         postId(){
@@ -100,8 +104,12 @@ export default {
     },
     methods:{
         async getSinglePost(){
-            await this.$store.dispatch('fetchPostById', this.postId)
-            this.post = this.$store.state.single
+            try{
+                await this.$store.dispatch('fetchPostById', this.postId)
+                this.post = this.$store.state.single
+            } finally{
+                this.isLoading = false
+            }
         },
         async getComments(){
             await this.$store.dispatch('fetchComments', this.postId)

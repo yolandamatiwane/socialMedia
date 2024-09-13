@@ -1,5 +1,7 @@
 <template>
   <div class="mainHome">
+    <LoadingOverlay :isLoading = "isLoading"/>
+
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-12 col-sm-7 order-2 order-sm-1" id="main">
@@ -88,12 +90,14 @@
 <script>
 // @ is an alias to /src
 import FooterComp from '@/components/FooterComp.vue';
+import LoadingOverlay from '@/components/SpinnerComp.vue'
 export default {
   name: 'HomeView',
   data(){
     return{
       searchTerm:'',
-      maxSearchResults: 4
+      maxSearchResults: 4,
+      isLoading: true 
     }
   },
   computed:{
@@ -116,11 +120,19 @@ export default {
   }
   ,
   methods:{
-    getPosts(){
-      this.$store.dispatch('fetchPosts')
+    async getPosts(){
+      try{
+        await this.$store.dispatch('fetchPosts')
+      } finally{
+        this.isLoading = false
+      }
     },
     getUsers(){
-      this.$store.dispatch('fetchUsers')
+      try{
+        this.$store.dispatch('fetchUsers')
+      } finally {
+        this.isLoading = false
+      }
     }
   },
   mounted() {
@@ -128,7 +140,8 @@ export default {
     this.getUsers()
   },
   components:{
-    FooterComp
+    FooterComp,
+    LoadingOverlay
   }
 }
 </script>
@@ -172,7 +185,6 @@ export default {
   width: 80%;
   margin: 10px auto;
   border: none;
-  /* color: white */
 }
 .card-header,.card-footer{
   background-color: #36454F;
@@ -184,7 +196,6 @@ export default {
 }
 h4{
   color: #a4d4a1;
-  /* color: white; */
 }
 h6{
   color: white;
@@ -216,8 +227,15 @@ h6{
 .search-result div {
   color: white;
 }
+@media(max-width:900px){
+  .mainHome{
+    margin-left: 150px;
+  }
+}
 @media(max-width:600px){
-  
+  .mainHome{
+    margin-left: 0px;
+  }
   .container-fluid{
     font-size: small;
   }

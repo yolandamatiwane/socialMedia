@@ -2,7 +2,7 @@
   <nav v-if="token">
     <div>
       <div class="navLogo">
-        <h2>ComfortCorner</h2>
+        <h2 class="card-text">ComfortCorner</h2>
       </div>
       <router-link to="/home">
         <h4>
@@ -100,23 +100,23 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  /* color: #7A9D6E; */
   color: #36454F;
   border-radius: 5px;
-  /* background-color: rgba(255, 255, 255, 0.432); */
   font-weight: 900;
 }
 
 /* mobile */
-@media (max-width: 900px){
-
-  .navLogo{
-    height: auto;
-    /* font-size: smaller; */
-    margin: auto;
-  }
+@media(max-width:1100px){
   h2{
-    font-size: smaller;
+    font-size: 20px;
+    font-weight: 900;
+  }
+}
+@media(max-width:900px){
+  h2{
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px;
   }
 }
 @media (max-width: 600px) {
@@ -132,7 +132,6 @@ nav a.router-link-exact-active {
     flex-direction: row;
     justify-content: space-around;
     box-shadow: none;
-
   }
 
   nav div {
@@ -143,30 +142,33 @@ nav a.router-link-exact-active {
   nav a {
     font-size: 14px; 
     padding: 10px; 
-    /* margin-bottom: 0px; */
-  }
-
-  .navLogo {
-    display: none;
-    /* font-size: smaller;
-    margin-bottom: 15px; */
-  }
-  h4, .btn{
-    display: flex;
-    flex-direction: column;
-    font-size:18px;
-    /* margin-bottom: 50px; */
   }
   .btn{
     background-color: #A4D4A1;
+    color: white;
     border: none;
   }
-}
-@media (max-width:430px){
   label{
+    font-size: small;
+  }
+  .navLogo {
     display: none;
   }
-
 }
+@media(max-width:430px){
+    label{
+      display: none;
+    }
+    i{
+      font-size: 20px;
+    }
+    nav div{
+      margin: auto;
+    }
+    .btn{
+      margin-bottom:20px ;
+    }
+  }
+
 
 </style>
