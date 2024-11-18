@@ -6,9 +6,9 @@
       <div class="row">
         <div class="col-12 col-sm-7 order-2 order-sm-1" id="main">
           <div class="flex">
-            <div id="homeUserDets" v-for="user in users" :key="user.user_id">
-            <img :src="user.profile" id="userPic">
-            <div>{{ user.firstName }}</div>
+            <div id="homeUserDets" v-for="user in limitedUsers" :key="user.user_id">
+              <img :src="user.profile" id="userPic">
+              <div>{{ user.firstName }}</div>
             </div>
           </div>
           <div>
@@ -114,6 +114,9 @@ export default {
     }
   },
   computed:{
+    limitedUsers() {
+    return this.users.slice(0, 5); // Show only 5 users
+    },
     users(){
       return this.$store.state.users || []
     },
