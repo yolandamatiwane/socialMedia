@@ -185,6 +185,7 @@ export default {
   font-size:10px;
   color: white;
   border-bottom: 2px solid white;
+  overflow-y: auto; 
   /* display: flex; */
 }
 .flex{
